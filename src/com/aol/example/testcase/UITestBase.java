@@ -82,7 +82,7 @@ public abstract class UITestBase {
 		String build = testName;
 
 		LOG.debug("Getting webdriver instance...");
-		driver = driverFactory.getRemoteWebDriver(build, testName, os, browserType, "",width,height);
+		driver = driverFactory.getRemoteWebDriver(build, testName, os, browserType, "");
 
 		driver.openEyes(eyes, testName, productName+" "+testName, getRectangle(width, height));
 
