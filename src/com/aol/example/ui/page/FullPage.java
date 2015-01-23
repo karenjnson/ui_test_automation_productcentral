@@ -62,6 +62,23 @@ public class FullPage {
 		}
 		return result;
 	}
+	
+	public boolean signIn(String userName,String password) {
+		try
+		{
+			driver.findElement(USERNAME_INPUT).sendKeys(userName);
+			driver.findElement(PASSWORD_INPUT).sendKeys(password);
+			driver.findElement(SIGNIN_BUTTON).click();
+		}
+		catch(Exception e)
+		{
+		   LOG.error("There was an issue signing in: " + e.getMessage());
+		   return false;
+		}
+		return true;
+	}
+	
+	
 
 	private void answerSecurityQuestion(Account account) {
 		// get security question from page
@@ -108,4 +125,7 @@ public class FullPage {
 	private static final By SECURITY_QUESTION_DIV_LOC = By.id("asq");
 	private static final By SECURITY_QUESTION_LOC = By.xpath("//*[@id='asq']/form/h4");
 	private static final By SUBMIT_SECURITY_ANSWER_LOC = By.id("continueID");
+	private static final By USERNAME_INPUT = By.id("lgnId1");
+	private static final By PASSWORD_INPUT = By.id("pwdId1");
+	private static final By SIGNIN_BUTTON = By.id("submitID");
 }

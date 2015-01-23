@@ -21,6 +21,7 @@ import com.aol.common.util.io.IOUtils;
 import com.aol.framework.screen.ScreenUtil;
 import com.aol.framework.util.UITestUtils;
 import com.applitools.eyes.Eyes;
+import com.applitools.eyes.MatchLevel;
 import com.applitools.eyes.RectangleSize;
 
 public abstract class UITestBase {
@@ -59,6 +60,7 @@ public abstract class UITestBase {
 		driverFactory = new WebDriverFactory(getGridProviders(gridProviders));
 		eyes = new Eyes();
         eyes.setApiKey(mainProps.getProperty("APPLITOOLS_API_KEY"));
+        eyes.setMatchLevel(MatchLevel.LAYOUT);
 	}
 
 
@@ -67,22 +69,22 @@ public abstract class UITestBase {
 //	public void beforeMethod(ITestContext testContext, Method method, String os,
 //			String browserType, @Optional("")String browserVersion, @Optional("") String platform)
 //	{
-	@Parameters({"os", "browserType", "width", "height"})
+	@Parameters({"os", "browserType", "width", "height","productName","version"})
 	public void beforeMethod(ITestContext testContext, Method method, String os,
-			String browserType, String width, String height)
+			String browserType, String width, String height,String productName,String version)
 	{
 		LOG.debug("width: " + width);
 		LOG.debug("Height: " + height);
-
+		
 		/* used by SauceLabs */
 		String testName = method.getName();
 		/* used by BrowserStack */
 		String build = testName;
 
 		LOG.debug("Getting webdriver instance...");
-		driver = driverFactory.getRemoteWebDriver(build, testName, os, browserType, "");
+		driver = driverFactory.getRemoteWebDriver(build, testName, os, browserType, "",width,height);
 
-		driver.openEyes(eyes, "Universal Checkout", "TestExample", getRectangle(width, height));
+		driver.openEyes(eyes, testName, productName+" "+testName, getRectangle(width, height));
 
 		saveSessionId(testContext);
 
