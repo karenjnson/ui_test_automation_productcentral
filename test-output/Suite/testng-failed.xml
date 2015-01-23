@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Suite]">
+  <parameter name="os" value="win8"/>
+  <parameter name="username" value="ritsmvp6a69a1"/>
+  <parameter name="height" value="768"/>
+  <parameter name="width" value="1024"/>
+  <parameter name="accountType" value="sns"/>
+  <parameter name="browserType" value="firefox"/>
+  <parameter name="env" value="prod"/>
+  <parameter name="username_max" value="ritsmvp6a69a2"/>
+  <parameter name="productName" value="PrivateWifi"/>
+  <parameter name="password" value="qwe123"/>
+  <parameter name="gridProviders" value="browserStack"/>
+  <parameter name="version" value=""/>
+  <test name="Test_MostDesktopBrowsersMininumSize(failed)">
+    <parameter name="height" value="768"/>
+    <parameter name="width" value="1024"/>
+    <classes>
+      <class name="com.aol.example.testcase.PrivateWifi">
+        <methods>
+          <include name="beforeSuite"/>
+          <include name="afterMethod"/>
+          <include name="beforeMethod"/>
+          <include name="loadPrivateWifiPageAndSignIn"/>
+        </methods>
+      </class> <!-- com.aol.example.testcase.PrivateWifi -->
+    </classes>
+  </test> <!-- Test_MostDesktopBrowsersMininumSize(failed) -->
+</suite> <!-- Failed suite [Suite] -->

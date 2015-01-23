@@ -5,7 +5,7 @@
 	<parameter name="gridProviders" value="localhost" />
 
 	<parameter name="os" value="osx" />
-	<parameter name="browserType" value="chrome" />
+	<parameter name="browserType" value="firefox" />
 
 	<!-- OPTIONAL PARAMETERS -->
 	<!-- 
