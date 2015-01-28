@@ -39,4 +39,21 @@ public class PrivateWifiPage extends FullPage{
 		
 		driver.findElement(By.linkText("Get Started")).click();
 	}
+	
+	public boolean validateDownloadText()
+	{
+		if(driver.findElement(By.xpath("html/body/section[1]/div/div/div[1]/div[2]/div/h1")).isDisplayed()) return true;
+		return false;
+		
+	}
+	
+	
+	public boolean validateMaxErrorText()
+	{
+		if(driver.findElement(By.xpath("html/body/section/div/div/h3")).isDisplayed()) return true;
+		return false;
+		
+	}
+	
+	
 }

@@ -72,4 +72,53 @@ public class PrivateWifi extends UITestBase{
 		}
 	}
 	
+	@Parameters({"accountType", "username", "password"})
+	@Test
+	public void privateWifiDownloadTest(String accountType, String username, String password)
+	{
+		account = new Account(accountType, username, password, null);
+		privateWifi = new PrivateWifiPage(driver);
+		
+		privateWifi.openPrivateWifi(envProps);
+		
+		privateWifi.downloadPrivateWifi();
+	
+		try {
+			privateWifi.signIn(account.getUsername(),account.getPassword());
+			Assert.assertTrue(privateWifi.validateDownloadText());
+			
+		} catch (Exception e) {
+			//TODO: handle screenshots with a listener
+			captureScreenshotOnFailure("signIn_" + getErrorScreenshotName(account.getUsername()));
+
+			Assert.fail("Unable to login: " + e.getMessage());
+			e.printStackTrace();
+		}
+	}
+	
+	@Parameters({"accountType", "username_max", "password"})
+	@Test 
+	public void privateWifiMaxReached(String accountType, String username_max, String password)
+	{
+		account = new Account(accountType, username_max, password, null);
+		privateWifi = new PrivateWifiPage(driver);
+		
+		privateWifi.openPrivateWifi(envProps);
+		
+		privateWifi.downloadPrivateWifi();
+	
+		try {
+			privateWifi.signIn(account.getUsername(),account.getPassword());
+			Assert.assertTrue(privateWifi.validateMaxErrorText());
+			
+		} catch (Exception e) {
+			//TODO: handle screenshots with a listener
+			captureScreenshotOnFailure("signIn_" + getErrorScreenshotName(account.getUsername()));
+
+			Assert.fail("Unable to login: " + e.getMessage());
+			e.printStackTrace();
+		}
+	}
+	
+	
 }

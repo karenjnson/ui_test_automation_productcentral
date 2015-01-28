@@ -73,4 +73,52 @@ public class PrivateWifiMobile extends UITestBase{
 		}
 	}
 	
+	@Parameters({"accountType", "username", "password"})
+	@Test
+	public void privateWifiMobileDownload(String accountType, String username, String password)
+	{
+		account = new Account(accountType, username, password, null);
+		privateWifi = new PrivateWifiPage(driver);
+		
+		privateWifi.openPrivateWifi(envProps);
+		driver.findElement(By.linkText("Mobile Version")).click();
+		privateWifi.clickAppleStore();
+	
+		try {
+			privateWifi.signIn(account.getUsername(),account.getPassword());
+			Assert.assertTrue(privateWifi.validateDownloadText());
+			
+		} catch (Exception e) {
+			//TODO: handle screenshots with a listener
+			captureScreenshotOnFailure("signIn_" + getErrorScreenshotName(account.getUsername()));
+
+			Assert.fail("Unable to login: " + e.getMessage());
+			e.printStackTrace();
+		}
+	}
+
+	@Parameters({"accountType", "username_max", "password"})
+	@Test 
+	public void mobileCheckMaxLimit(String accountType, String username_max, String password)
+	{
+		account = new Account(accountType, username_max, password, null);
+		privateWifi = new PrivateWifiPage(driver);
+		
+		privateWifi.openPrivateWifi(envProps);
+		driver.findElement(By.linkText("Mobile Version")).click();
+		privateWifi.clickAppleStore();
+	
+		try {
+			privateWifi.signIn(account.getUsername(),account.getPassword());
+			Assert.assertTrue(privateWifi.validateMaxErrorText());
+			
+		} catch (Exception e) {
+			//TODO: handle screenshots with a listener
+			captureScreenshotOnFailure("signIn_" + getErrorScreenshotName(account.getUsername()));
+
+			Assert.fail("Unable to login: " + e.getMessage());
+			e.printStackTrace();
+		}
+	}
+	
 }
