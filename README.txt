@@ -1,15 +1,15 @@
 SETUP
-Also checkout ui_test_automation_base from Stash "Automation Code" project - https://stash.ops.aol.com/projects/AC
+Also checkout ui_test_automation_base from GitHub - https://github.com/aol/ui_test_automation_base
 
 There is a pom.xml so you should be able to get all required dependencies with 'mvn eclipse:clean eclipse:eclipse'
 
 The files for controlling tests are:
 
-	./resources/config/main.properties (controls which GRID instance to call)
-	./testng/TestExampleLifestore.xml		(controls which test suite to run, which browsers to use, which groups of tests to include/exclude, etc.)
+	./resources/config/main.properties (use to set you Applitools Eyes API key)
+	./testng/TestExampleLifestore.xml   (controls which test suite to run, which browsers to use, which groups of tests to include/exclude, etc.)
 
 
-Sample test suite is /ui_test_automation_example/src/com/aol/example/testcase/TestExampleLifestore.java
+Sample test suite is ui_test_automation_example/src/com/aol/example/testcase/TestExampleLifestore.java
 
 
 To stand up your own local instance of grid you'll need to:
