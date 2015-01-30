@@ -9,7 +9,7 @@ import org.openqa.selenium.By;
 import com.aol.automation.webdriver.WebDriverWrapper;
 
 public class HyattLegalPage extends FullPage{
-	
+
 	public HyattLegalPage(WebDriverWrapper driver) {
 		super(driver);
 		// TODO Auto-generated constructor stub
@@ -18,21 +18,21 @@ public class HyattLegalPage extends FullPage{
 
 	public static final Log LOG = LogFactory.getLog(HyattLegalPage.class);
 
-	
+
 	public HyattLegalPage openHyattLegal(Properties envProps) {
 
-		String url = envProps.getProperty("STARTCHECKOUT.URL.HYATTLEGAL");
-		
+		String url = envProps.getProperty("MVP.LANDING.URL.HYATTLEGAL");
+
 		LOG.debug("Getting page: " + url);
 		driver.get(url);
 
 		return this;
 	}
 
-	
-	public void getStarted() 
+
+	public void getStarted()
 	{
-		
+
 		driver.findElement(By.linkText("Get Started")).click();
 	}
 }

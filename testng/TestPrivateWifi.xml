@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <suite name="Suite" parallel="false">
 
-	<parameter name="env" value="prod" />
+	<parameter name="env" value="qa" />
 	<parameter name="gridProviders" value="localhost" />
 
 	<parameter name="os" value="osx" />

@@ -19,7 +19,7 @@ public class PrivateWifiPage extends FullPage {
 
 	public PrivateWifiPage openPrivateWifi(Properties envProps) {
 
-		String url = envProps.getProperty("STARTCHECKOUT.URL.PRIVATEWIFI");
+		String url = envProps.getProperty("MVP.LANDING.URL.PRIVATEWIFI");
 
 		LOG.debug("Getting page: " + url);
 		driver.get(url);
