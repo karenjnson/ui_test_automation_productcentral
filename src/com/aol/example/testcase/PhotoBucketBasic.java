@@ -3,35 +3,38 @@ package com.aol.example.testcase;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.testng.Assert;
+import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
+import com.aol.common.model.user.ASQ;
 import com.aol.common.model.user.Account;
 import com.aol.example.ui.page.PhotoBucketBasicPage;
-import com.aol.example.ui.page.PrivateWifiPage;
 
 public class PhotoBucketBasic extends UITestBase{
-	
+
 	private static final Log LOG = LogFactory.getLog(PhotoBucketBasic.class);
-    private PhotoBucketBasicPage photoBucket= null;
-	
-    
-	@Parameters({"accountType", "username", "password"})
+
+
+	@Parameters({"accountType", "username", "password", "asqQuestion", "asqAnswer", "countryCode"})
 	@Test
-	public void photoBucketNotValidErrorPage(String accountType, String username, String password)
+	public void photoBucketNotValidErrorPage(String accountType, String username, String password,
+	@Optional("Question") String asqQuestion, @Optional("1234") String asqAnswer,
+	@Optional("us") String countryCode)
 	{
-		account = new Account(accountType, username, password, null);
-		photoBucket = new PhotoBucketBasicPage(driver);
-		
+		ASQ accountSecurityQAndA = new ASQ(asqQuestion, asqAnswer);
+		account = new Account(accountType, username, password, accountSecurityQAndA, countryCode);
+		PhotoBucketBasicPage photoBucket = new PhotoBucketBasicPage(driver);
+
 		photoBucket.openPhotoBucketPage(envProps);
-		
+
 		eyes.checkWindow("PhotoBucket Landing Page");
 		photoBucket.activatePhotoBucket();
-	
+
 		try {
 			photoBucket.signIn(account.getUsername(),account.getPassword());
 			eyes.checkWindow("PhotoBucket Error Page");
-			
+
 		} catch (Exception e) {
 			//TODO: handle screenshots with a listener
 			captureScreenshotOnFailure("Try Again" + getErrorScreenshotName(account.getUsername()));
@@ -40,10 +43,5 @@ public class PhotoBucketBasic extends UITestBase{
 			e.printStackTrace();
 		}
 	}
-	
-	
-	
-
-	
 
 }

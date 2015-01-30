@@ -18,7 +18,7 @@
 	<parameter name="productName" value="PrivateWifi" />
 	<parameter name="accountType" value="sns" />
 	<parameter name="username" value="ritsmvp6a69a1" />
-	<parameter name="username_max" value="ritsmvp6a69a2" />
+	<parameter name="usernameMax" value="ritsmvp6a69a2" />
 	<parameter name="password" value="qwe123" />
 		
 	<!-- iPhone 5S - Vertical -->
