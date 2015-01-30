@@ -75,7 +75,7 @@ public abstract class UITestBase {
 	{
 		LOG.debug("width: " + width);
 		LOG.debug("Height: " + height);
-		
+
 		/* used by SauceLabs */
 		String testName = method.getName();
 		/* used by BrowserStack */
@@ -167,7 +167,7 @@ public abstract class UITestBase {
 		return gridProviders;
 	}
 
-	public void sleep(long ms, String why_do_you_need_a_hard_sleep) {
+	protected void sleep(long ms, String why_do_you_need_a_hard_sleep) {
 		try {
 			LOG.warn("Hard sleep("+ ms+ "): " + why_do_you_need_a_hard_sleep);
 			Thread.sleep(ms);
