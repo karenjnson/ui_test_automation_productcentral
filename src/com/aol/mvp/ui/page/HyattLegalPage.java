@@ -1,4 +1,4 @@
-package com.aol.example.ui.page;
+package com.aol.mvp.ui.page;
 
 import java.util.Properties;
 

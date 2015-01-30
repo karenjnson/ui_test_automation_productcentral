@@ -1,4 +1,4 @@
-package com.aol.example.ui.page;
+package com.aol.mvp.ui.page;
 
 import java.util.Properties;
 
@@ -7,7 +7,7 @@ import org.apache.commons.logging.LogFactory;
 import org.openqa.selenium.By;
 
 import com.aol.automation.webdriver.WebDriverWrapper;
-import com.aol.example.model.Product;
+import com.aol.mvp.model.Product;
 
 public class CheckoutPage extends FullPage {
 

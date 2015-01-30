@@ -1,8 +1,7 @@
-package com.aol.example.testcase;
+package com.aol.mvp.testcase;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
@@ -10,18 +9,19 @@ import org.testng.annotations.Test;
 
 import com.aol.common.model.user.ASQ;
 import com.aol.common.model.user.Account;
-import com.aol.example.ui.page.PrivateWifiPage;
+import com.aol.mvp.ui.page.PrivateWifiPage;
 
-public class PrivateWifiMobile extends UITestBase{
+public class PrivateWifi extends UITestBase{
 
 
 	private static final Log LOG = LogFactory.getLog(PrivateWifi.class);
 
-	//TODO remove all the copy/pasted code
+
+	//TODO: stop copy/pasting same code into every test
 
 	@Parameters({"accountType", "username", "password", "asqQuestion", "asqAnswer", "countryCode"})
 	@Test
-	public void loadPrivateWifiMobilePageAndSignIn(String accountType, String username, String password,
+	public void loadPrivateWifiPageAndSignIn(String accountType, String username, String password,
 			@Optional("Question") String asqQuestion, @Optional("1234") String asqAnswer,
 			@Optional("us") String countryCode)
 	{
@@ -30,9 +30,9 @@ public class PrivateWifiMobile extends UITestBase{
 		PrivateWifiPage privateWifi = new PrivateWifiPage(driver);
 
 		privateWifi.openPrivateWifi(envProps);
-		driver.findElement(By.linkText("Mobile Version")).click();
+
 		eyes.checkWindow("Private Wifi Landing Page");
-		privateWifi.clickAppleStore();
+		privateWifi.downloadPrivateWifi();
 
 		try {
 			privateWifi.signIn(account.getUsername(),account.getPassword());
@@ -49,7 +49,7 @@ public class PrivateWifiMobile extends UITestBase{
 
 	@Parameters({"accountType", "usernameMax", "password", "asqQuestion", "asqAnswer", "countryCode"})
 	@Test
-	public void mobileCheckMaxLimitReached(String accountType, String usernameMax, String password,
+	public void checkMaxLimitReached(String accountType, String usernameMax, String password,
 			@Optional("Question") String asqQuestion, @Optional("1234") String asqAnswer,
 			@Optional("us") String countryCode)
 	{
@@ -58,9 +58,8 @@ public class PrivateWifiMobile extends UITestBase{
 		PrivateWifiPage privateWifi = new PrivateWifiPage(driver);
 
 		privateWifi.openPrivateWifi(envProps);
-		driver.findElement(By.linkText("Mobile Version")).click();
 		eyes.checkWindow("Private Wifi Landing Page");
-		privateWifi.clickAppleStore();
+		privateWifi.downloadPrivateWifi();
 
 		try {
 			privateWifi.signIn(account.getUsername(),account.getPassword());
@@ -77,7 +76,7 @@ public class PrivateWifiMobile extends UITestBase{
 
 	@Parameters({"accountType", "username", "password", "asqQuestion", "asqAnswer", "countryCode"})
 	@Test
-	public void privateWifiMobileDownload(String accountType, String username, String password,
+	public void privateWifiDownloadTest(String accountType, String username, String password,
 			@Optional("Question") String asqQuestion, @Optional("1234") String asqAnswer,
 			@Optional("us") String countryCode)
 	{
@@ -86,8 +85,8 @@ public class PrivateWifiMobile extends UITestBase{
 		PrivateWifiPage privateWifi = new PrivateWifiPage(driver);
 
 		privateWifi.openPrivateWifi(envProps);
-		driver.findElement(By.linkText("Mobile Version")).click();
-		privateWifi.clickAppleStore();
+
+		privateWifi.downloadPrivateWifi();
 
 		try {
 			privateWifi.signIn(account.getUsername(),account.getPassword());
@@ -104,7 +103,7 @@ public class PrivateWifiMobile extends UITestBase{
 
 	@Parameters({"accountType", "usernameMax", "password", "asqQuestion", "asqAnswer", "countryCode"})
 	@Test
-	public void mobileCheckMaxLimit(String accountType, String usernameMax, String password,
+	public void privateWifiMaxReached(String accountType, String usernameMax, String password,
 			@Optional("Question") String asqQuestion, @Optional("1234") String asqAnswer,
 			@Optional("us") String countryCode)
 	{
@@ -113,8 +112,8 @@ public class PrivateWifiMobile extends UITestBase{
 		PrivateWifiPage privateWifi = new PrivateWifiPage(driver);
 
 		privateWifi.openPrivateWifi(envProps);
-		driver.findElement(By.linkText("Mobile Version")).click();
-		privateWifi.clickAppleStore();
+
+		privateWifi.downloadPrivateWifi();
 
 		try {
 			privateWifi.signIn(account.getUsername(),account.getPassword());

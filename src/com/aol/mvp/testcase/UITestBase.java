@@ -1,4 +1,4 @@
-package com.aol.example.testcase;
+package com.aol.mvp.testcase;
 
 import java.io.IOException;
 import java.lang.reflect.Method;

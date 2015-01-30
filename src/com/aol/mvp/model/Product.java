@@ -1,4 +1,4 @@
-package com.aol.example.model;
+package com.aol.mvp.model;
 
 public class Product {
 

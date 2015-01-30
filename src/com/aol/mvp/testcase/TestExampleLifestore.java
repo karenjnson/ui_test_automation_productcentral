@@ -1,4 +1,4 @@
-package com.aol.example.testcase;
+package com.aol.mvp.testcase;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -10,8 +10,8 @@ import org.testng.annotations.Test;
 
 import com.aol.common.model.user.ASQ;
 import com.aol.common.model.user.Account;
-import com.aol.example.model.Product;
-import com.aol.example.ui.page.CheckoutPage;
+import com.aol.mvp.model.Product;
+import com.aol.mvp.ui.page.CheckoutPage;
 
 public class TestExampleLifestore extends UITestBase {
 
