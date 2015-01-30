@@ -5,7 +5,6 @@ import java.util.Properties;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 
 import com.aol.automation.webdriver.WebDriverWrapper;
 import com.aol.example.model.Product;

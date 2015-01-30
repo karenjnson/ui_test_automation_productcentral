@@ -62,23 +62,20 @@ public class FullPage {
 		}
 		return result;
 	}
-	
+
 	public boolean signIn(String userName,String password) {
-		try
-		{
+		try {
 			driver.findElement(USERNAME_INPUT).sendKeys(userName);
 			driver.findElement(PASSWORD_INPUT).sendKeys(password);
 			driver.findElement(SIGNIN_BUTTON).click();
-		}
-		catch(Exception e)
-		{
+		} catch(Exception e) {
 		   LOG.error("There was an issue signing in: " + e.getMessage());
 		   return false;
 		}
 		return true;
 	}
-	
-	
+
+
 
 	private void answerSecurityQuestion(Account account) {
 		// get security question from page
