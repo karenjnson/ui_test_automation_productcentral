@@ -55,7 +55,7 @@ public class FullPage {
 		clickSignIn();	// launch popup
 
 		try {
-			UILogin.signIn(driver, account.getAcctType(), account.getUsername(), account.getPassword());
+			//UILogin.signIn(driver, account.getAcctType(), account.getUsername(), account.getPassword());
 			result = true;
 		} catch (Exception e) {
 			LOG.error("There was an issue signing in: " + e.getMessage());

@@ -31,5 +31,10 @@ public class PhotoBucketBasicPage extends FullPage{
 
 		driver.findElement(By.linkText("Activate Now")).click();
 	}
+	
+	public boolean checkErrorMessage()
+	{
+		return driver.findElement(By.linkText("Try Again")).isDisplayed();
+	}
 
 }

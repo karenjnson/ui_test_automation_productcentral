@@ -18,8 +18,9 @@
 	<parameter name="productName" value="PhotoBucket" />
 	<parameter name="accountType" value="sns" />
 	<parameter name="username" value="ritsmvp6a69a1" />
-	<parameter name="username_max" value="ritsmvp2799a44" />
+	<parameter name="username_active" value="ritsmvp6free13" />
 	<parameter name="password" value="qwe123" />
+	<parameter name="password_active" value="testing123" />
 		
 	<!-- iPhone 5S - Vertical -->
 <!-- 	<test name="Test_iPhone5s_Vertical">
@@ -62,7 +63,7 @@
 		<classes>				
 			<parameter name="width" value="1024" />
 			<parameter name="height" value="768" />
-			<class name="com.aol.example.testcase.PhotoBucketBasic" />
+			<class name="com.aol.mvp.testcase.PhotoBucketBasic" />
 		</classes>
 	</test>
 

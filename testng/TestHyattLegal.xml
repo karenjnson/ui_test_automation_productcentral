@@ -62,7 +62,7 @@
 		<classes>				
 			<parameter name="width" value="1024" />
 			<parameter name="height" value="768" />
-			<class name="com.aol.example.testcase.HyattLegal" />
+			<class name="com.aol.mvp.testcase.HyattLegal" />
 		</classes>
 	</test>
 

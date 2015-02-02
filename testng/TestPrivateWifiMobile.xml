@@ -15,7 +15,7 @@
 	-->
 	
 	
-	<parameter name="productName" value="PrivateWifi" />
+	<parameter name="productName" value="PrivateWifiMobile" />
 	<parameter name="accountType" value="sns" />
 	<parameter name="username" value="ritsmvp6a69a1" />
 	<parameter name="username_max" value="ritsmvp6a69a2" />
@@ -62,7 +62,7 @@
 		<classes>				
 			<parameter name="width" value="1024" />
 			<parameter name="height" value="768" />
-			<class name="com.aol.example.testcase.PrivateWifiMobile" />
+			<class name="com.aol.mvp.testcase.PrivateWifiMobile" />
 		</classes>
 	</test>
 

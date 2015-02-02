@@ -18,7 +18,7 @@ public class HyattLegal extends UITestBase{
 
 	@Parameters({"accountType", "username", "password", "asqQuestion", "asqAnswer", "countryCode"})
 	@Test
-	public void photoBucketNotValidErrorPage(String accountType, String username, String password,
+	public void hyattLegalPage(String accountType, String username, String password,
 			@Optional("Question") String asqQuestion, @Optional("1234") String asqAnswer,
 			@Optional("us") String countryCode)
 	{
@@ -28,12 +28,12 @@ public class HyattLegal extends UITestBase{
 
 		hyattLegal.openHyattLegal(envProps);
 
-		eyes.checkWindow("PhotoBucket Landing Page");
+		eyes.checkWindow("Hyatt Legal Landing Page");
 		hyattLegal.getStarted();
 
 		try {
 			hyattLegal.signIn(account.getUsername(),account.getPassword());
-			eyes.checkWindow("PhotoBucket Error Page");
+			eyes.checkWindow("Hyatt Legal");
 			Thread.sleep(1000);
 		} catch (Exception e) {
 			//TODO: handle screenshots with a listener
@@ -44,5 +44,31 @@ public class HyattLegal extends UITestBase{
 		}
 	}
 
+	@Parameters({"accountType", "username", "password", "asqQuestion", "asqAnswer", "countryCode"})
+	@Test
+	public void hyattLegalFlow(String accountType, String username, String password,
+			@Optional("Question") String asqQuestion, @Optional("1234") String asqAnswer,
+			@Optional("us") String countryCode)
+	{
+		ASQ accountSecurityQAndA = new ASQ(asqQuestion, asqAnswer);
+		account = new Account(accountType, username, password, accountSecurityQAndA, countryCode);
+		HyattLegalPage hyattLegal = new HyattLegalPage(driver);
+
+		hyattLegal.openHyattLegal(envProps);
+
+		hyattLegal.getStarted();
+
+		try {
+			hyattLegal.signIn(account.getUsername(),account.getPassword());
+			Assert.assertTrue(hyattLegal.checkHeader());
+			Thread.sleep(1000);
+		} catch (Exception e) {
+			//TODO: handle screenshots with a listener
+			captureScreenshotOnFailure("Hyatt Legal" + getErrorScreenshotName(account.getUsername()));
+
+			Assert.fail("Unable to login: " + e.getMessage());
+			e.printStackTrace();
+		}
+	}
 
 }

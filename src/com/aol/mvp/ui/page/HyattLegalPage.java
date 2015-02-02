@@ -35,4 +35,11 @@ public class HyattLegalPage extends FullPage{
 
 		driver.findElement(By.linkText("Get Started")).click();
 	}
+	
+	
+	public boolean checkHeader()
+	{
+		return driver.findElement(By.xpath("html/body/section/div/div/h1")).isDisplayed();
+	}
+	
 }
