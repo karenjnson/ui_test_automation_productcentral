@@ -31,7 +31,7 @@
 		<classes>
 			<parameter name="width" value="320" />
 			<parameter name="height" value="568" />
-			<class name="com.aol.example.testcase.TestExampleLifestore" />
+			<class name="com.aol.mvp.testcase.TestExampleLifestore" />
 		</classes>
 	</test> -->
 
@@ -40,7 +40,7 @@
 		<classes>	
 			<parameter name="width" value="375" />
 			<parameter name="height" value="667" />
-			<class name="com.aol.example.testcase.TestExampleLifestore" />
+			<class name="com.aol.mvp.testcase.TestExampleLifestore" />
 		</classes>
 	</test> -->
 
@@ -49,7 +49,7 @@
 		<classes>				
 			<parameter name="width" value="414" />
 			<parameter name="height" value="736" />
-			<class name="com.aol.example.testcase.TestExampleLifestore" />
+			<class name="com.aol.mvp.testcase.TestExampleLifestore" />
 		</classes>
 	</test> -->
 
@@ -58,7 +58,7 @@
 		<classes>				
 			<parameter name="width" value="768" />
 			<parameter name="height" value="1024" />
-			<class name="com.aol.example.testcase.TestExampleLifestore" />
+			<class name="com.aol.mvp.testcase.TestExampleLifestore" />
 		</classes>
 	</test> -->
 
@@ -67,7 +67,7 @@
 		<classes>				
 			<parameter name="width" value="1024" />
 			<parameter name="height" value="768" />
-			<class name="com.aol.example.testcase.TestExampleLifestore" />
+			<class name="com.aol.mvp.testcase.TestExampleLifestore" />
 		</classes>
 	</test>
 
