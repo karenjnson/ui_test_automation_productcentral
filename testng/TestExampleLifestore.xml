@@ -19,6 +19,8 @@
 	<parameter name="sku" value="assist-by-aol-999ft" />
 	<parameter name="friendlyName" value="Assist by AOL" />
 	
+	<parameter name="productName" value="Assist by AOL" />
+	
 	<parameter name="accountType" value="sns" />
 	<parameter name="username" value="obiprodlife36" />
 	<parameter name="password" value="qwe123" />
