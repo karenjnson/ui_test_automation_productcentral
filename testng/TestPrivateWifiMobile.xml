@@ -6,7 +6,6 @@
 
 	<parameter name="os" value="osx" />
 	<parameter name="browserType" value="firefox" />
-    <parameter name="version" value="" />
     
 	<!-- OPTIONAL PARAMETERS -->
 	<!-- 
@@ -26,7 +25,7 @@
 		<classes>
 			<parameter name="width" value="320" />
 			<parameter name="height" value="568" />
-			<class name="com.aol.example.testcase.TestExampleLifestore" />
+			<class name="com.aol.mvp.testcase.PrivateWifiMobile" />
 		</classes>
 	</test> -->
 
@@ -35,7 +34,7 @@
 		<classes>	
 			<parameter name="width" value="375" />
 			<parameter name="height" value="667" />
-			<class name="com.aol.example.testcase.TestExampleLifestore" />
+			<class name="com.aol.mvp.testcase.PrivateWifiMobile" />
 		</classes>
 	</test> -->
 
@@ -44,7 +43,7 @@
 		<classes>				
 			<parameter name="width" value="414" />
 			<parameter name="height" value="736" />
-			<class name="com.aol.example.testcase.TestExampleLifestore" />
+			<class name="com.aol.mvp.testcase.PrivateWifiMobile" />
 		</classes>
 	</test> -->
 
@@ -53,7 +52,7 @@
 		<classes>				
 			<parameter name="width" value="768" />
 			<parameter name="height" value="1024" />
-			<class name="com.aol.example.testcase.TestExampleLifestore" />
+			<class name="com.aol.mvp.testcase.PrivateWifiMobile" />
 		</classes>
 	</test> -->
 

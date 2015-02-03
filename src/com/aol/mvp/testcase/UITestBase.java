@@ -69,9 +69,9 @@ public abstract class UITestBase {
 //	public void beforeMethod(ITestContext testContext, Method method, String os,
 //			String browserType, @Optional("")String browserVersion, @Optional("") String platform)
 //	{
-	@Parameters({"os", "browserType", "width", "height","productName","version"})
+	@Parameters({"os", "browserType", "width", "height","productName","browserVersion"})
 	public void beforeMethod(ITestContext testContext, Method method, String os,
-			String browserType, String width, String height,String productName,String version)
+			String browserType, String width, String height, String productName, @Optional("")String browserVersion)
 	{
 		LOG.debug("width: " + width);
 		LOG.debug("Height: " + height);
@@ -89,7 +89,7 @@ public abstract class UITestBase {
 		saveSessionId(testContext);
 
 		errorScreenShotSuffix = os + "_" + browserType
-//				+ "_"+ browserVersion
+				+ "_"+ browserVersion
 				+ "_" + "USR" + "."
 				+ mainProps.getProperty("SCREENSHOT_IMG_FORMAT");
 	}

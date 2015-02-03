@@ -19,6 +19,8 @@
 	<parameter name="sku" value="assist-by-aol-999ft" />
 	<parameter name="friendlyName" value="Assist by AOL" />
 	
+	<parameter name="productName" value="Assist by AOL" />
+	
 	<parameter name="accountType" value="sns" />
 	<parameter name="username" value="obiprodlife36" />
 	<parameter name="password" value="qwe123" />
@@ -31,7 +33,7 @@
 		<classes>
 			<parameter name="width" value="320" />
 			<parameter name="height" value="568" />
-			<class name="com.aol.example.testcase.TestExampleLifestore" />
+			<class name="com.aol.mvp.testcase.TestExampleLifestore" />
 		</classes>
 	</test> -->
 
@@ -40,7 +42,7 @@
 		<classes>	
 			<parameter name="width" value="375" />
 			<parameter name="height" value="667" />
-			<class name="com.aol.example.testcase.TestExampleLifestore" />
+			<class name="com.aol.mvp.testcase.TestExampleLifestore" />
 		</classes>
 	</test> -->
 
@@ -49,7 +51,7 @@
 		<classes>				
 			<parameter name="width" value="414" />
 			<parameter name="height" value="736" />
-			<class name="com.aol.example.testcase.TestExampleLifestore" />
+			<class name="com.aol.mvp.testcase.TestExampleLifestore" />
 		</classes>
 	</test> -->
 
@@ -58,7 +60,7 @@
 		<classes>				
 			<parameter name="width" value="768" />
 			<parameter name="height" value="1024" />
-			<class name="com.aol.example.testcase.TestExampleLifestore" />
+			<class name="com.aol.mvp.testcase.TestExampleLifestore" />
 		</classes>
 	</test> -->
 
