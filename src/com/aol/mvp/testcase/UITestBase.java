@@ -17,7 +17,7 @@ import org.testng.annotations.Parameters;
 import com.aol.automation.webdriver.WebDriverFactory;
 import com.aol.automation.webdriver.WebDriverWrapper;
 import com.aol.common.model.user.Account;
-import com.aol.common.util.UITestUtils;
+import com.aol.common.util.StringUtils;
 import com.aol.common.util.io.IOUtils;
 import com.aol.common.util.screen.ScreenUtil;
 import com.applitools.eyes.Eyes;
@@ -44,17 +44,14 @@ public abstract class UITestBase {
 	@BeforeSuite(alwaysRun=true)
 	@Parameters({"env", "gridProviders"})
 	public void beforeSuite(String env, @Optional(DEFAULT_GRID_PROVIDERS) String gridProviders) throws IOException {
-		mainProps = IOUtils.readPropertiesFile(MAIN_PROPERTIES_FILE);
 
-		if (UITestUtils.isNotNullOrEmpty(env)) {
-			envName = env.toLowerCase();
-		} else {
-			LOG.warn("No env or unrecognized env specified ["+ env +"].  Defaulting env to QA");
-			envName = "qa";
+		if (StringUtils.isNullOrEmpty(env)) {
+			LOG.warn("No env or unrecognized env specified ["+ env +"].  Defaulting env to 'qa'");
+			env = "qa";
 		}
-		String delimiter = mainProps.getProperty("DELIMITER", "/");
-		String envPropertyFile = CONFIG_DIR + delimiter + envName + delimiter + ENV_PROPERTIES_FILE;
-		envProps = IOUtils.readPropertiesFile(envPropertyFile);
+		envName = env.toLowerCase();
+
+		getConfigProperties();
 
 		/* NOTE: gridProviders is set to DEFAULT_GRID_PROVIDERS if user doesn't specify */
 		driverFactory = new WebDriverFactory(getGridProviders(gridProviders));
@@ -107,6 +104,13 @@ public abstract class UITestBase {
 			}
 	        eyes.abortIfNotClosed();
 		}
+	}
+
+	private void getConfigProperties() throws IOException {
+		mainProps = IOUtils.readPropertiesFile(MAIN_PROPERTIES_FILE);
+		String delimiter = mainProps.getProperty("DELIMITER", "/");
+		String envPropertyFile = CONFIG_DIR + delimiter + envName + delimiter + ENV_PROPERTIES_FILE;
+		envProps = IOUtils.readPropertiesFile(envPropertyFile);
 	}
 
 
