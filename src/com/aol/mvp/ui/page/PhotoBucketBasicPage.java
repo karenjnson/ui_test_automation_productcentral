@@ -8,7 +8,7 @@ import org.openqa.selenium.By;
 
 import com.aol.automation.webdriver.WebDriverWrapper;
 
-public class PhotoBucketBasicPage extends FullPage{
+public class PhotoBucketBasicPage extends FullPage implements LandingPage{
 	public static final Log LOG = LogFactory.getLog(PhotoBucketBasicPage.class);
 
 	public PhotoBucketBasicPage(WebDriverWrapper driver) {
@@ -26,7 +26,7 @@ public class PhotoBucketBasicPage extends FullPage{
 		return this;
 	}
 
-	public void activatePhotoBucket()
+	public void getStarted()
 	{
 
 		driver.findElement(By.linkText("Activate Now")).click();

@@ -8,7 +8,7 @@ import org.openqa.selenium.By;
 
 import com.aol.automation.webdriver.WebDriverWrapper;
 
-public class HyattLegalPage extends FullPage{
+public class HyattLegalPage extends FullPage implements LandingPage{
 
 	public HyattLegalPage(WebDriverWrapper driver) {
 		super(driver);
