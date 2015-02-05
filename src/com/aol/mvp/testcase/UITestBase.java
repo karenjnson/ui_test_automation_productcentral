@@ -66,7 +66,7 @@ public abstract class UITestBase {
 //	public void beforeMethod(ITestContext testContext, Method method, String os,
 //			String browserType, @Optional("")String browserVersion, @Optional("") String platform)
 //	{
-	@Parameters({"os", "browserType", "width", "height","productName","browserVersion"})
+	@Parameters({"os", "browserType", "width", "height", "productName", "browserVersion"})
 	public void beforeMethod(ITestContext testContext, Method method, String os,
 			String browserType, String width, String height, String productName, @Optional("")String browserVersion)
 	{
@@ -79,7 +79,7 @@ public abstract class UITestBase {
 		String build = testName;
 
 		LOG.debug("Getting webdriver instance...");
-		driver = driverFactory.getRemoteWebDriver(build, testName, os, browserType, "");
+		driver = driverFactory.getRemoteWebDriver(build, testName, os, browserType, browserVersion);
 
 		driver.openEyes(eyes, testName, productName+" "+testName, getRectangle(width, height));
 
