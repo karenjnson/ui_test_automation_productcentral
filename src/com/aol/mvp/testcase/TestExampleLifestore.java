@@ -40,7 +40,7 @@ public class TestExampleLifestore extends UITestBase {
         eyes.checkWindow("Start Checkout Page");
 
 		try {
-			checkout.signIn(account);
+			checkout.signInViaPopup(account);
 		} catch (Exception e) {
 			//TODO: handle screenshots with a listener
 			captureScreenshotOnFailure("signIn_" + getErrorScreenshotName(account.getUsername()));

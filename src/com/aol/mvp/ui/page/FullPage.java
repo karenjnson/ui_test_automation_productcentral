@@ -50,12 +50,12 @@ public class FullPage {
 //		return new UsMyAccountsPage(driver);
 //	}
 
-	public boolean signIn(Account account) {
+	public boolean signInViaPopup(Account account) {
 		boolean result = false;
 		clickSignIn();	// launch popup
 
 		try {
-			//UILogin.signIn(driver, account.getAcctType(), account.getUsername(), account.getPassword());
+			UILogin.signIn(driver, account.getAcctType(), account.getUsername(), account.getPassword());
 			result = true;
 		} catch (Exception e) {
 			LOG.error("There was an issue signing in: " + e.getMessage());
@@ -63,7 +63,18 @@ public class FullPage {
 		return result;
 	}
 
-	public boolean signIn(String userName,String password) {
+	public boolean signIn(Account account) {
+		return signIn(account.getUsername(), account.getPassword());
+	}
+
+	/** call signIn(Account account) instead
+	 *
+	 * @param userName
+	 * @param password
+	 * @return
+	 */
+	@Deprecated
+	public boolean signIn(String userName, String password) {
 		try {
 			driver.findElement(USERNAME_INPUT).sendKeys(userName);
 			driver.findElement(PASSWORD_INPUT).sendKeys(password);

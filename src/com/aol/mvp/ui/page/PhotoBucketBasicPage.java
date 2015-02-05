@@ -8,7 +8,7 @@ import org.openqa.selenium.By;
 
 import com.aol.automation.webdriver.WebDriverWrapper;
 
-public class PhotoBucketBasicPage extends FullPage implements LandingPage{
+public class PhotoBucketBasicPage extends FullPage implements LandingPage {
 	public static final Log LOG = LogFactory.getLog(PhotoBucketBasicPage.class);
 
 	public PhotoBucketBasicPage(WebDriverWrapper driver) {
@@ -26,14 +26,11 @@ public class PhotoBucketBasicPage extends FullPage implements LandingPage{
 		return this;
 	}
 
-	public void getStarted()
-	{
-
+	public void getStarted() {
 		driver.findElement(By.linkText("Activate Now")).click();
 	}
-	
-	public boolean checkErrorMessage()
-	{
+
+	public boolean isErrorMessageDisplayed() {
 		return driver.findElement(By.linkText("Try Again")).isDisplayed();
 	}
 

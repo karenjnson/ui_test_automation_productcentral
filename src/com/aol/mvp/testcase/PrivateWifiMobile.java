@@ -35,7 +35,7 @@ public class PrivateWifiMobile extends UITestBase{
 		privateWifi.clickAppleStore();
 
 		try {
-			privateWifi.signIn(account.getUsername(),account.getPassword());
+			privateWifi.signIn(account);
 			eyes.checkWindow("Private Wifi Download Page");
 
 		} catch (Exception e) {
@@ -63,7 +63,7 @@ public class PrivateWifiMobile extends UITestBase{
 		privateWifi.clickAppleStore();
 
 		try {
-			privateWifi.signIn(account.getUsername(),account.getPassword());
+			privateWifi.signIn(account);
 			eyes.checkWindow("Private Wifi Download Error Page For Max Downlaod");
 
 		} catch (Exception e) {
@@ -90,7 +90,7 @@ public class PrivateWifiMobile extends UITestBase{
 		privateWifi.clickAppleStore();
 
 		try {
-			privateWifi.signIn(account.getUsername(),account.getPassword());
+			privateWifi.signIn(account);
 			Assert.assertTrue(privateWifi.validateDownloadText());
 
 		} catch (Exception e) {
@@ -117,7 +117,7 @@ public class PrivateWifiMobile extends UITestBase{
 		privateWifi.clickAppleStore();
 
 		try {
-			privateWifi.signIn(account.getUsername(),account.getPassword());
+			privateWifi.signIn(account);
 			Assert.assertTrue(privateWifi.validateMaxErrorText());
 
 		} catch (Exception e) {

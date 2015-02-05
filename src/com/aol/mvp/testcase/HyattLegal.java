@@ -32,7 +32,7 @@ public class HyattLegal extends UITestBase{
 		hyattLegal.getStarted();
 
 		try {
-			hyattLegal.signIn(account.getUsername(),account.getPassword());
+			hyattLegal.signIn(account);
 			eyes.checkWindow("Hyatt Legal");
 			Thread.sleep(1000);
 		} catch (Exception e) {
@@ -59,7 +59,7 @@ public class HyattLegal extends UITestBase{
 		hyattLegal.getStarted();
 
 		try {
-			hyattLegal.signIn(account.getUsername(),account.getPassword());
+			hyattLegal.signIn(account);
 			Assert.assertTrue(hyattLegal.checkHeader());
 			Thread.sleep(1000);
 		} catch (Exception e) {
