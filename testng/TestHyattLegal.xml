@@ -4,7 +4,7 @@
 	<parameter name="env" value="qa" />
 	<parameter name="gridProviders" value="localhost" />
 
-	<parameter name="os" value="osx" />
+	<parameter name="os" value="vista" />
 	<parameter name="browserType" value="firefox" />
     
 	<!-- OPTIONAL PARAMETERS -->
@@ -61,7 +61,8 @@
 		<classes>				
 			<parameter name="width" value="1024" />
 			<parameter name="height" value="768" />
-			<class name="com.aol.mvp.testcase.HyattLegal" />
+			<class name="com.aol.mvp.testcase.TestLandingPage" />
+			<class name="com.aol.mvp.testcase.TestInputPage" />
 		</classes>
 	</test>
 

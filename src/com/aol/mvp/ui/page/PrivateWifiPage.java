@@ -7,8 +7,9 @@ import org.apache.commons.logging.LogFactory;
 import org.openqa.selenium.By;
 
 import com.aol.automation.webdriver.WebDriverWrapper;
+import com.aol.common.model.user.Account;
 
-public class PrivateWifiPage extends FullPage {
+public class PrivateWifiPage extends FullPage implements LandingPage, InputPage, DownloadPage{
 
 	public static final Log LOG = LogFactory.getLog(PrivateWifiPage.class);
 
@@ -53,6 +54,43 @@ public class PrivateWifiPage extends FullPage {
 		if(driver.findElement(By.xpath("html/body/section/div/div/h3")).isDisplayed()) return true;
 		return false;
 
+	}
+
+
+	@Override
+	public void download() {
+		downloadPrivateWifi();		
+	}
+
+
+	@Override
+	public boolean provideInput(Account account) {
+		return signIn(account);
+	}
+
+
+	@Override
+	public void openLandingPage(Properties envProps) {
+		openPrivateWifi(envProps);		
+	}
+
+
+	@Override
+	public InputPage getStarted() {
+		clickAppleStore();
+		return this;
+		
+	}
+
+
+	@Override
+	public boolean checkHeader() {
+		return false;
+	}
+
+	@Override
+	public DownloadPage downloadNow() {
+		return this;
 	}
 
 

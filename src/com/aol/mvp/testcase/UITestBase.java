@@ -20,6 +20,8 @@ import com.aol.common.model.user.Account;
 import com.aol.common.util.StringUtils;
 import com.aol.common.util.io.IOUtils;
 import com.aol.common.util.screen.ScreenUtil;
+import com.aol.mvp.ui.page.LandingPage;
+import com.aol.mvp.ui.page.LandingPageFactory;
 import com.applitools.eyes.Eyes;
 import com.applitools.eyes.MatchLevel;
 import com.applitools.eyes.RectangleSize;
@@ -39,6 +41,8 @@ public abstract class UITestBase {
 
 	protected Account account = null;
 	protected Eyes eyes;
+	protected String productName;
+	protected LandingPage landingPage;
 
 
 	@BeforeSuite(alwaysRun=true)
@@ -84,7 +88,9 @@ public abstract class UITestBase {
 		driver.openEyes(eyes, testName, productName+" "+testName, getRectangle(width, height));
 
 		saveSessionId(testContext);
-
+		
+		landingPage = LandingPageFactory.getLandingPage(driver, productName);
+		this.productName = productName; 
 		errorScreenShotSuffix = os + "_" + browserType
 				+ "_"+ browserVersion
 				+ "_" + "USR" + "."
@@ -180,7 +186,7 @@ public abstract class UITestBase {
 			e.printStackTrace();
 		}
 	}
-
+	
 	private static final String CONFIG_DIR = "resources/config";
 	private static final String DEFAULT_GRID_PROVIDERS = "griddick";
 	private static final String MAIN_PROPERTIES_FILE = CONFIG_DIR + "/main.properties";

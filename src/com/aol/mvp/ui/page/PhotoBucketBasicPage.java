@@ -7,8 +7,9 @@ import org.apache.commons.logging.LogFactory;
 import org.openqa.selenium.By;
 
 import com.aol.automation.webdriver.WebDriverWrapper;
+import com.aol.common.model.user.Account;
 
-public class PhotoBucketBasicPage extends FullPage implements LandingPage {
+public class PhotoBucketBasicPage extends FullPage implements LandingPage, InputPage {
 	public static final Log LOG = LogFactory.getLog(PhotoBucketBasicPage.class);
 
 	public PhotoBucketBasicPage(WebDriverWrapper driver) {
@@ -16,22 +17,38 @@ public class PhotoBucketBasicPage extends FullPage implements LandingPage {
 		// TODO Auto-generated constructor stub
 	}
 
-	public PhotoBucketBasicPage openPhotoBucketPage(Properties envProps) {
+	@Override
+	public void openLandingPage(Properties envProps) {
 
 		String url = envProps.getProperty("MVP.LANDING.URL.PHOTOBUCKET");
 
 		LOG.debug("Getting page: " + url);
 		driver.get(url);
-
-		return this;
+		
 	}
 
-	public void getStarted() {
+	public InputPage getStarted() {
 		driver.findElement(By.linkText("Activate Now")).click();
+		return this;
 	}
 
 	public boolean isErrorMessageDisplayed() {
 		return driver.findElement(By.linkText("Try Again")).isDisplayed();
+	}
+
+	@Override
+	public boolean checkHeader() {
+		return true;
+	}
+
+	@Override
+	public boolean provideInput(Account account) {
+		return signIn(account);
+	}
+
+	@Override
+	public DownloadPage downloadNow() {
+		return null;
 	}
 
 }

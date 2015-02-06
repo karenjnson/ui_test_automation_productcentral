@@ -13,19 +13,4 @@ public class LandingPageFactory {
 		}
 		return landingPage;
 	}
-
-	/* I don't think we'll need these methods */
-	public static DownloadPage getDownloadPage(WebDriverWrapper driver, String productName){
-		DownloadPage downloadPage = null;
-		//TODO: Add logic to instantiate specific Impl based on productName
-		return downloadPage;
-	}
-
-	public static ActivationPage getActivationPage(WebDriverWrapper driver, String productName){
-		ActivationPage activationPage = null;
-
-		//TODO: Add logic to instantiate specific Impl based on productName
-		return activationPage;
-	}
-
 }

@@ -26,7 +26,7 @@ public class PhotoBucketBasic extends UITestBase{
 		account = new Account(accountType, username, password, accountSecurityQAndA, countryCode);
 		PhotoBucketBasicPage photoBucket = new PhotoBucketBasicPage(driver);
 
-		photoBucket.openPhotoBucketPage(envProps);
+		photoBucket.openLandingPage(envProps);
 
 		eyes.checkWindow("PhotoBucket Landing Page");
 		photoBucket.getStarted();
@@ -54,7 +54,7 @@ public class PhotoBucketBasic extends UITestBase{
 		account = new Account(accountType, username, password, accountSecurityQAndA, countryCode);
 		PhotoBucketBasicPage photoBucket = new PhotoBucketBasicPage(driver);
 
-		photoBucket.openPhotoBucketPage(envProps);
+		photoBucket.openLandingPage(envProps);
 
 		photoBucket.getStarted();
 		try {

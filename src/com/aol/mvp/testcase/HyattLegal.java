@@ -26,13 +26,13 @@ public class HyattLegal extends UITestBase{
 		account = new Account(accountType, username, password, accountSecurityQAndA, countryCode);
 		HyattLegalPage hyattLegal = new HyattLegalPage(driver);
 
-		hyattLegal.openHyattLegal(envProps);
+		hyattLegal.openLandingPage(envProps);
 
 		eyes.checkWindow("Hyatt Legal Landing Page");
 		hyattLegal.getStarted();
 
 		try {
-			hyattLegal.signIn(account);
+			hyattLegal.signIn(account.getUsername(),account.getPassword());
 			eyes.checkWindow("Hyatt Legal");
 			Thread.sleep(1000);
 		} catch (Exception e) {
@@ -54,12 +54,12 @@ public class HyattLegal extends UITestBase{
 		account = new Account(accountType, username, password, accountSecurityQAndA, countryCode);
 		HyattLegalPage hyattLegal = new HyattLegalPage(driver);
 
-		hyattLegal.openHyattLegal(envProps);
+		hyattLegal.openLandingPage(envProps);
 
 		hyattLegal.getStarted();
 
 		try {
-			hyattLegal.signIn(account);
+			hyattLegal.signIn(account.getUsername(),account.getPassword());
 			Assert.assertTrue(hyattLegal.checkHeader());
 			Thread.sleep(1000);
 		} catch (Exception e) {
