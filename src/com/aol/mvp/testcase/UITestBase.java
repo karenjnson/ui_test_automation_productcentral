@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 import java.util.Properties;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.openqa.selenium.remote.SessionId;
@@ -17,7 +18,6 @@ import org.testng.annotations.Parameters;
 import com.aol.automation.webdriver.WebDriverFactory;
 import com.aol.automation.webdriver.WebDriverWrapper;
 import com.aol.common.model.user.Account;
-import com.aol.common.util.StringUtils;
 import com.aol.common.util.io.IOUtils;
 import com.aol.common.util.screen.ScreenUtil;
 import com.aol.mvp.ui.page.LandingPage;
@@ -49,7 +49,7 @@ public abstract class UITestBase {
 	@Parameters({"env", "gridProviders"})
 	public void beforeSuite(String env, @Optional(DEFAULT_GRID_PROVIDERS) String gridProviders) throws IOException {
 
-		if (StringUtils.isNullOrEmpty(env)) {
+		if (StringUtils.isBlank(env)) {
 			LOG.warn("No env or unrecognized env specified ["+ env +"].  Defaulting env to 'qa'");
 			env = "qa";
 		}

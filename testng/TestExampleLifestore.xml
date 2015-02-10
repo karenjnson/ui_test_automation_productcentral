@@ -4,7 +4,7 @@
 	<parameter name="env" value="qa" />
 	<parameter name="gridProviders" value="localhost" />
 
-	<parameter name="os" value="osx" />
+	<parameter name="os" value="windows" />
 	<parameter name="browserType" value="firefox" />
 
 	<!-- OPTIONAL PARAMETERS -->

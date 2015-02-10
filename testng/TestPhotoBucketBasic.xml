@@ -14,7 +14,7 @@
 	-->
 	
 	
-	<parameter name="productName" value="PhotoBucket" />
+	<parameter name="productName" value="PhotoBucketBasic" />
 	<parameter name="accountType" value="sns" />
 	<parameter name="username" value="ritsmvp6a69a1" />
 	<parameter name="username_active" value="ritsmvp6free13" />

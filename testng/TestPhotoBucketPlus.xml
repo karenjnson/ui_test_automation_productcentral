@@ -4,7 +4,7 @@
 	<parameter name="env" value="qa" />
 	<parameter name="gridProviders" value="localhost" />
 
-	<parameter name="os" value="osx" />
+	<parameter name="os" value="windows" />
 	<parameter name="browserType" value="firefox" />
     
 	<!-- OPTIONAL PARAMETERS -->
@@ -14,7 +14,7 @@
 	-->
 	
 	
-	<parameter name="productName" value="PhotoBucket" />
+	<parameter name="productName" value="PhotoBucketPlus" />
 	<parameter name="accountType" value="sns" />
 	<parameter name="username" value="ritsmvp6a69a1" />
 	<parameter name="username_max" value="ritsmvp2799a44" />

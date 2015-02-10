@@ -8,7 +8,7 @@ public class LandingPageFactory {
 		LandingPage landingPage = null;
 		if(productName.equals("HyattLegal")){
 			landingPage = new HyattLegalPage(driver);
-		}else  if(productName.equals("PhotoBucketBasic")){
+		}else  if(productName.equals("PhotoBucketBasic")|| productName.equals("PhotoBucketPlus")){
 			landingPage = new PhotoBucketBasicPage(driver);
 		}
 		return landingPage;
