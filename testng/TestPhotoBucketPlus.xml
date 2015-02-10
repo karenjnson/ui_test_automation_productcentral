@@ -61,7 +61,9 @@
 		<classes>				
 			<parameter name="width" value="1024" />
 			<parameter name="height" value="768" />
-			<class name="com.aol.mvp.testcase.PhotoBucketBasic" />
+			<class name="com.aol.mvp.testcase.TestLandingPage" />
+			<class name="com.aol.mvp.testcase.TestInputPage" />
+
 		</classes>
 	</test>
 

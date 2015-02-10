@@ -29,10 +29,10 @@ public class PrivateWifi extends UITestBase{
 		account = new Account(accountType, username, password, accountSecurityQAndA, countryCode);
 		PrivateWifiPage privateWifi = new PrivateWifiPage(driver);
 
-		privateWifi.openPrivateWifi(envProps);
+		privateWifi.openLandingPage(envProps);
 
 		eyes.checkWindow("Private Wifi Landing Page");
-		privateWifi.downloadPrivateWifi();
+		privateWifi.download();
 
 		try {
 			privateWifi.signIn(account);
@@ -57,9 +57,9 @@ public class PrivateWifi extends UITestBase{
 		account = new Account(accountType, usernameMax, password, accountSecurityQAndA, countryCode);
 		PrivateWifiPage privateWifi = new PrivateWifiPage(driver);
 
-		privateWifi.openPrivateWifi(envProps);
+		privateWifi.openLandingPage(envProps);
 		eyes.checkWindow("Private Wifi Landing Page");
-		privateWifi.downloadPrivateWifi();
+		privateWifi.download();
 
 		try {
 			privateWifi.signIn(account);
@@ -84,9 +84,9 @@ public class PrivateWifi extends UITestBase{
 		account = new Account(accountType, username, password, accountSecurityQAndA, countryCode);
 		PrivateWifiPage privateWifi = new PrivateWifiPage(driver);
 
-		privateWifi.openPrivateWifi(envProps);
+		privateWifi.openLandingPage(envProps);
 
-		privateWifi.downloadPrivateWifi();
+		privateWifi.download();
 
 		try {
 			privateWifi.signIn(account);
@@ -111,9 +111,9 @@ public class PrivateWifi extends UITestBase{
 		account = new Account(accountType, usernameMax, password, accountSecurityQAndA, countryCode);
 		PrivateWifiPage privateWifi = new PrivateWifiPage(driver);
 
-		privateWifi.openPrivateWifi(envProps);
+		privateWifi.openLandingPage(envProps);
 
-		privateWifi.downloadPrivateWifi();
+		privateWifi.download();
 
 		try {
 			privateWifi.signIn(account);

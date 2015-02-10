@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 import com.aol.common.model.user.ASQ;
 import com.aol.common.model.user.Account;
 import com.aol.mvp.ui.page.DownloadPage;
-import com.aol.mvp.ui.page.PrivateWifiPage;
+import com.aol.mvp.ui.page.InputPage;
 
 public class TestDownloadPage extends UITestBase {
 	private static final Log LOG = LogFactory.getLog(TestDownloadPage.class);
@@ -25,11 +25,12 @@ public class TestDownloadPage extends UITestBase {
 		account = new Account(accountType, username, password, accountSecurityQAndA, countryCode);
 
 		landingPage.openLandingPage(envProps);
+		InputPage inputPage = landingPage.getStarted();
 
 		DownloadPage downloadPage = landingPage.downloadNow();
 
 		try {
-			downloadPage.signIn(account);
+			inputPage.provideInput(account);
 			Assert.assertTrue(downloadPage.validateDownloadText());
 
 		} catch (Exception e) {

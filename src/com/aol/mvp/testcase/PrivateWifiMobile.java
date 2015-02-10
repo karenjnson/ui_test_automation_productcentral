@@ -29,10 +29,10 @@ public class PrivateWifiMobile extends UITestBase{
 		account = new Account(accountType, username, password, accountSecurityQAndA, countryCode);
 		PrivateWifiPage privateWifi = new PrivateWifiPage(driver);
 
-		privateWifi.openPrivateWifi(envProps);
+		privateWifi.openLandingPage(envProps);
 		driver.findElement(By.linkText("Mobile Version")).click();
 		eyes.checkWindow("Private Wifi Landing Page");
-		privateWifi.clickAppleStore();
+		privateWifi.getStarted();
 
 		try {
 			privateWifi.signIn(account);
@@ -57,10 +57,10 @@ public class PrivateWifiMobile extends UITestBase{
 		account = new Account(accountType, usernameMax, password, accountSecurityQAndA, countryCode);
 		PrivateWifiPage privateWifi = new PrivateWifiPage(driver);
 
-		privateWifi.openPrivateWifi(envProps);
+		privateWifi.openLandingPage(envProps);
 		driver.findElement(By.linkText("Mobile Version")).click();
 		eyes.checkWindow("Private Wifi Landing Page");
-		privateWifi.clickAppleStore();
+		privateWifi.getStarted();
 
 		try {
 			privateWifi.signIn(account);
@@ -85,9 +85,9 @@ public class PrivateWifiMobile extends UITestBase{
 		account = new Account(accountType, username, password, accountSecurityQAndA, countryCode);
 		PrivateWifiPage privateWifi = new PrivateWifiPage(driver);
 
-		privateWifi.openPrivateWifi(envProps);
+		privateWifi.openLandingPage(envProps);
 		driver.findElement(By.linkText("Mobile Version")).click();
-		privateWifi.clickAppleStore();
+		privateWifi.getStarted();
 
 		try {
 			privateWifi.signIn(account);
@@ -112,9 +112,9 @@ public class PrivateWifiMobile extends UITestBase{
 		account = new Account(accountType, usernameMax, password, accountSecurityQAndA, countryCode);
 		PrivateWifiPage privateWifi = new PrivateWifiPage(driver);
 
-		privateWifi.openPrivateWifi(envProps);
+		privateWifi.openLandingPage(envProps);
 		driver.findElement(By.linkText("Mobile Version")).click();
-		privateWifi.clickAppleStore();
+		privateWifi.getStarted();
 
 		try {
 			privateWifi.signIn(account);
