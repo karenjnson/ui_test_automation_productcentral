@@ -9,7 +9,7 @@ import org.openqa.selenium.By;
 import com.aol.automation.webdriver.WebDriverWrapper;
 import com.aol.common.model.user.Account;
 
-public class HyattLegalPage extends FullPage implements LandingPage, InputPage{
+public class HyattLegalPage extends FullPage implements LandingPage, LoginPage{
 
 	public HyattLegalPage(WebDriverWrapper driver) {
 		super(driver);
@@ -29,7 +29,7 @@ public class HyattLegalPage extends FullPage implements LandingPage, InputPage{
 	}
 
 
-	public InputPage getStarted()
+	public LoginPage getStarted()
 	{
 		driver.findElement(By.linkText("Get Started")).click();
 		return this;
@@ -43,7 +43,7 @@ public class HyattLegalPage extends FullPage implements LandingPage, InputPage{
 
 
 	@Override
-	public boolean provideInput(Account account) {
+	public boolean login(Account account) {
 		return signIn(account);	
 	}
 

@@ -4,7 +4,7 @@ import java.util.Properties;
 
 public interface LandingPage {
 	public void openLandingPage(Properties envProps);
-	public InputPage getStarted();
+	public LoginPage getStarted();
 	public DownloadPage downloadNow();
 	public boolean checkHeader();
 }

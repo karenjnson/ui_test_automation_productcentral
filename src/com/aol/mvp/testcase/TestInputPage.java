@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 
 import com.aol.common.model.user.ASQ;
 import com.aol.common.model.user.Account;
-import com.aol.mvp.ui.page.InputPage;
+import com.aol.mvp.ui.page.LoginPage;
 
 public class TestInputPage extends UITestBase {
 
@@ -28,10 +28,10 @@ public class TestInputPage extends UITestBase {
 		landingPage.openLandingPage(envProps);
 
 		eyes.checkWindow(productName+" Landing Page");
-		InputPage inputPage = landingPage.getStarted();
+		LoginPage loginPage = landingPage.getStarted();
 
 		try {
-			inputPage.provideInput(account);
+			loginPage.login(account);
 			eyes.checkWindow(productName);
 			Thread.sleep(1000);
 		} catch (Exception e) {

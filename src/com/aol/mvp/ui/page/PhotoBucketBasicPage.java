@@ -9,7 +9,7 @@ import org.openqa.selenium.By;
 import com.aol.automation.webdriver.WebDriverWrapper;
 import com.aol.common.model.user.Account;
 
-public class PhotoBucketBasicPage extends FullPage implements LandingPage, InputPage {
+public class PhotoBucketBasicPage extends FullPage implements LandingPage, LoginPage {
 	public static final Log LOG = LogFactory.getLog(PhotoBucketBasicPage.class);
 
 	public PhotoBucketBasicPage(WebDriverWrapper driver) {
@@ -27,7 +27,7 @@ public class PhotoBucketBasicPage extends FullPage implements LandingPage, Input
 		
 	}
 
-	public InputPage getStarted() {
+	public LoginPage getStarted() {
 		driver.findElement(By.linkText("Activate Now")).click();
 		return this;
 	}
@@ -42,7 +42,7 @@ public class PhotoBucketBasicPage extends FullPage implements LandingPage, Input
 	}
 
 	@Override
-	public boolean provideInput(Account account) {
+	public boolean login(Account account) {
 		return signIn(account);
 	}
 

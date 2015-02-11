@@ -10,11 +10,11 @@ import org.testng.annotations.Test;
 import com.aol.common.model.user.ASQ;
 import com.aol.common.model.user.Account;
 import com.aol.mvp.ui.page.DownloadPage;
-import com.aol.mvp.ui.page.InputPage;
+import com.aol.mvp.ui.page.LoginPage;
 
-public class TestDownloadPage extends UITestBase {
-	private static final Log LOG = LogFactory.getLog(TestDownloadPage.class);
-	
+public class TestDownloadProduct extends UITestBase {
+	private static final Log LOG = LogFactory.getLog(TestDownloadProduct.class);
+
 	@Parameters({"accountType", "username", "password", "asqQuestion", "asqAnswer", "countryCode"})
 	@Test
 	public void privateWifiDownloadTest(String accountType, String username, String password,
@@ -25,12 +25,12 @@ public class TestDownloadPage extends UITestBase {
 		account = new Account(accountType, username, password, accountSecurityQAndA, countryCode);
 
 		landingPage.openLandingPage(envProps);
-		InputPage inputPage = landingPage.getStarted();
+		LoginPage loginPage = landingPage.getStarted();
 
 		DownloadPage downloadPage = landingPage.downloadNow();
 
 		try {
-			inputPage.provideInput(account);
+			loginPage.login(account);
 			Assert.assertTrue(downloadPage.validateDownloadText());
 
 		} catch (Exception e) {

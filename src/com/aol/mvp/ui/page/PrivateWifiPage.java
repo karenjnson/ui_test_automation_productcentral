@@ -9,7 +9,7 @@ import org.openqa.selenium.By;
 import com.aol.automation.webdriver.WebDriverWrapper;
 import com.aol.common.model.user.Account;
 
-public class PrivateWifiPage extends FullPage implements LandingPage, InputPage, DownloadPage{
+public class PrivateWifiPage extends FullPage implements LandingPage, LoginPage, DownloadPage{
 
 	public static final Log LOG = LogFactory.getLog(PrivateWifiPage.class);
 
@@ -41,7 +41,7 @@ public class PrivateWifiPage extends FullPage implements LandingPage, InputPage,
 
 
 	@Override
-	public boolean provideInput(Account account) {
+	public boolean login(Account account) {
 		return signIn(account);
 	}
 
@@ -57,7 +57,7 @@ public class PrivateWifiPage extends FullPage implements LandingPage, InputPage,
 
 
 	@Override
-	public InputPage getStarted() {
+	public LoginPage getStarted() {
 		driver.findElement(By.linkText("Get Started")).click();
 		return this;		
 	}
