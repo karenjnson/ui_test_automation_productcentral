@@ -2,6 +2,7 @@ package com.aol.mvp.ui.page;
 
 import java.util.Properties;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.openqa.selenium.By;
@@ -15,7 +16,7 @@ import com.aol.common.model.user.Account;
 import com.aol.common.ui.login.UILogin;
 
 
-public class FullPage {
+public abstract class FullPage {
 
 	private static final Log LOG = LogFactory.getLog(FullPage.class);
 
@@ -126,6 +127,25 @@ public class FullPage {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
+	}
+
+	public boolean validateInvalidUserText() {
+		if(StringUtils.contains(driver.findElement(By.id("snPwdErr")).getText(), "Oops,due to an unexpected error we are unable to sign you in at this time. Please try again later")) return true;
+		return false;
+	}
+	
+	public boolean validateInvalidPasswordText() {
+		if(StringUtils.contains(driver.findElement(By.id("snPwdErr")).getText(), "Incorrect Username or Password")) return true;
+		return false;
+	}
+
+	
+	
+
+	public boolean validateIneligibleText() {
+		if(StringUtils.contains(driver.findElement(By.className("small-12")).getText(), "it appears that your username is not eligible")) return true;
+		return false;
+
 	}
 
 	private static final By MY_ACCT_LOC = By.xpath("//*[@id='myAccount']/a");

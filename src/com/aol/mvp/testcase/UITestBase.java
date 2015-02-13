@@ -43,6 +43,7 @@ public abstract class UITestBase {
 	protected Eyes eyes;
 	protected String productName;
 	protected LandingPage landingPage;
+	protected boolean mobileVersion = false;
 
 
 	@BeforeSuite(alwaysRun=true)
@@ -105,6 +106,10 @@ public abstract class UITestBase {
 				+ "_"+ browserVersion
 				+ "_" + "USR" + "."
 				+ mainProps.getProperty("SCREENSHOT_IMG_FORMAT");
+		
+		if(StringUtils.isNotBlank(testContext.getCurrentXmlTest().getParameter("mobileVersion"))){
+			mobileVersion  = Boolean.valueOf(testContext.getCurrentXmlTest().getParameter("mobileVersion"));
+		}
 	}
 
 
@@ -127,7 +132,9 @@ public abstract class UITestBase {
 				LOG.info(Thread.currentThread().getName() + "-" + Thread.currentThread().getId() + " Clearing driver");
 				driver.quit();
 			}
-	        eyes.abortIfNotClosed();
+			if(eyes != null){
+				eyes.abortIfNotClosed();
+			}
 		}
 	}
 

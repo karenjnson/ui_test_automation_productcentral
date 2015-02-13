@@ -17,7 +17,7 @@ public class TestDownloadProduct extends UITestBase {
 
 	@Parameters({"accountType", "username", "password", "asqQuestion", "asqAnswer", "countryCode"})
 	@Test
-	public void privateWifiDownloadTest(String accountType, String username, String password,
+	public void downloadTest(String accountType, String username, String password,
 			@Optional("Question") String asqQuestion, @Optional("1234") String asqAnswer,
 			@Optional("us") String countryCode)
 	{
@@ -41,4 +41,5 @@ public class TestDownloadProduct extends UITestBase {
 			e.printStackTrace();
 		}
 	}
+
 }

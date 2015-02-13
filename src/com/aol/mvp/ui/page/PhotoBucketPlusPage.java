@@ -7,17 +7,17 @@ import org.apache.commons.logging.LogFactory;
 
 import com.aol.automation.webdriver.WebDriverWrapper;
 
-public class PhotoBucketBasicPage extends PhotoBucketPage {
-	public static final Log LOG = LogFactory.getLog(PhotoBucketBasicPage.class);
+public class PhotoBucketPlusPage extends PhotoBucketPage {
+	public static final Log LOG = LogFactory.getLog(PhotoBucketPlusPage.class);
 
-	public PhotoBucketBasicPage(WebDriverWrapper driver) {
+	public PhotoBucketPlusPage(WebDriverWrapper driver) {
 		super(driver);
 	}
 
 	@Override
 	public void openLandingPage(Properties envProps) {
 
-		String url = envProps.getProperty("MVP.LANDING.URL.PHOTOBUCKET");
+		String url = envProps.getProperty("MVP.LANDING.URL.PHOTOBUCKET.PLUS");
 
 		LOG.debug("Getting page: " + url);
 		driver.get(url);

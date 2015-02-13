@@ -2,6 +2,7 @@ package com.aol.mvp.testcase;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.openqa.selenium.By;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
@@ -26,8 +27,11 @@ public class TestLandingPage extends UITestBase{
 
 		landingPage.openLandingPage(envProps);
 
-		eyes.checkWindow(productName+" Landing Page");		
-	}
-	
-	//TODO: Need to add a test for error in getting landing page 
+		eyes.checkWindow(productName+" Landing Page");
+		
+		// page may have Mobile version
+		if(mobileVersion){
+			driver.findElement(By.linkText("Mobile Version")).click();
+		}
+	}	
 }

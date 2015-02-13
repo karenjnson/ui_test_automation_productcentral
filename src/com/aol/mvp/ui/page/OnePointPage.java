@@ -10,11 +10,11 @@ import org.openqa.selenium.By;
 import com.aol.automation.webdriver.WebDriverWrapper;
 import com.aol.common.model.user.Account;
 
-public class PrivateWifiPage extends FullPage implements LandingPage, LoginPage, DownloadPage, ErrorIneligiblePage{
+public class OnePointPage extends FullPage implements LandingPage, LoginPage, DownloadPage, ErrorIneligiblePage{
 
-	public static final Log LOG = LogFactory.getLog(PrivateWifiPage.class);
+	public static final Log LOG = LogFactory.getLog(OnePointPage.class);
 
-	public PrivateWifiPage(WebDriverWrapper driver) {
+	public OnePointPage(WebDriverWrapper driver) {
 		super(driver);
 	}
 
@@ -50,7 +50,7 @@ public class PrivateWifiPage extends FullPage implements LandingPage, LoginPage,
 	@Override
 	public void openLandingPage(Properties envProps) {
 
-		String url = envProps.getProperty("MVP.LANDING.URL.PRIVATEWIFI");
+		String url = envProps.getProperty("MVP.LANDING.URL.ONEPOINT");
 
 		LOG.debug("Getting page: " + url);
 		driver.get(url);

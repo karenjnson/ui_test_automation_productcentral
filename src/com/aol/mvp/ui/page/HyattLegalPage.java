@@ -9,7 +9,7 @@ import org.openqa.selenium.By;
 import com.aol.automation.webdriver.WebDriverWrapper;
 import com.aol.common.model.user.Account;
 
-public class HyattLegalPage extends FullPage implements LandingPage, LoginPage{
+public class HyattLegalPage extends FullPage implements LandingPage, LoginPage, ErrorIneligiblePage{
 
 	public HyattLegalPage(WebDriverWrapper driver) {
 		super(driver);
@@ -52,5 +52,11 @@ public class HyattLegalPage extends FullPage implements LandingPage, LoginPage{
 	public DownloadPage downloadNow() {
 		return null;
 	}
-	
+
+
+	@Override
+	public ErrorIneligiblePage loginWithIneligibleUserCredentials(Account account) {	
+		signIn(account);
+		return this;
+	}
 }
