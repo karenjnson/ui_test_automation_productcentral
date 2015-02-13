@@ -20,8 +20,8 @@ public class LandingPageFactory {
 		if ("HyattLegal".equalsIgnoreCase(productName)) return new HyattLegalPage(driver);
 		if ("PhotoBucketBasic".equalsIgnoreCase(productName)
 				|| "PhotoBucketPlus".equalsIgnoreCase(productName)) return new PhotoBucketBasicPage(driver);
-		if ("privateWifi".equalsIgnoreCase(productName)) return new PrivateWifiPage(driver);
-
+		if ("privateWifi".equalsIgnoreCase(productName) || "PrivateWifiMobile".equalsIgnoreCase(productName)) return new PrivateWifiPage(driver);
+		
 		defaultErr(productName);
 		return null;
 	}

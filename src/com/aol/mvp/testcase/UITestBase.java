@@ -58,10 +58,19 @@ public abstract class UITestBase {
 		getConfigProperties();
 
 		/* NOTE: gridProviders is set to DEFAULT_GRID_PROVIDERS if user doesn't specify */
-		driverFactory = new WebDriverFactory(getGridProviders(gridProviders));
-		eyes = new Eyes();
-        eyes.setApiKey(mainProps.getProperty("APPLITOOLS_API_KEY"));
-        eyes.setMatchLevel(MatchLevel.LAYOUT);
+		driverFactory = new WebDriverFactory(getGridProviders(gridProviders));		
+	}
+
+
+	private Eyes getEyes() {
+		
+		if(eyes == null){
+			eyes = new Eyes();
+	        eyes.setApiKey(mainProps.getProperty("APPLITOOLS_API_KEY"));
+	        eyes.setMatchLevel(MatchLevel.LAYOUT);
+		}
+		
+		return eyes;
 	}
 
 
@@ -83,9 +92,10 @@ public abstract class UITestBase {
 		String build = testName;
 
 		LOG.debug("Getting webdriver instance...");
-		driver = driverFactory.getRemoteWebDriver(build, testName, os, browserType, browserVersion);
+		
+		driver = getDriverFactory(testContext).getRemoteWebDriver(build, testName, os, browserType, browserVersion);
 
-		driver.openEyes(eyes, testName, productName+" "+testName, getRectangle(width, height));
+		driver.openEyes(getEyes(), testName, productName+" "+testName, getRectangle(width, height));
 
 		saveSessionId(testContext);
 		
@@ -95,6 +105,15 @@ public abstract class UITestBase {
 				+ "_"+ browserVersion
 				+ "_" + "USR" + "."
 				+ mainProps.getProperty("SCREENSHOT_IMG_FORMAT");
+	}
+
+
+	private WebDriverFactory getDriverFactory(ITestContext testContext) {
+		if(driverFactory == null){
+			driverFactory = new WebDriverFactory(getGridProviders(testContext.getCurrentXmlTest().getParameter("gridProviders")));
+		}
+		
+		return driverFactory;
 	}
 
 
