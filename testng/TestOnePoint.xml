@@ -66,7 +66,7 @@
 			<parameter name="username" value="ritsmvp6a69a1" />
 			<parameter name="password" value="qwe123" />
 			<class name="com.aol.mvp.testcase.TestLandingPage" />
-			<class name="com.aol.mvp.testcase.TestInputPage" />
+			<class name="com.aol.mvp.testcase.TestRegistrationProduct" />
 			<methods>
 					<include name="testValidUser" />
 			</methods>
@@ -88,7 +88,7 @@
 			<parameter name="password" value="qwe123" />
 			<parameter name="mobileVersion" value="true" />			
 			<class name="com.aol.mvp.testcase.TestLandingPage" />
- 			<class name="com.aol.mvp.testcase.TestInputPage" />
+ 			<class name="com.aol.mvp.testcase.TestRegistrationProduct" />
 			<methods>
 					<include name="testValidUser" />
 			</methods>
@@ -104,7 +104,7 @@
 		<classes>
 			<parameter name="username" value="notARealUser" />
 			<parameter name="password" value="qwe123" />
-			<class name="com.aol.mvp.testcase.TestInputPage">
+			<class name="com.aol.mvp.testcase.TestRegistrationProduct">
 				<methods>
 					<include name="testInvalidUser" />
 				</methods>
@@ -115,7 +115,7 @@
 		<classes>
 			<parameter name="username" value="ritsmvp6a69a1" />
 			<parameter name="password" value="badPassword" />
-			<class name="com.aol.mvp.testcase.TestInputPage">
+			<class name="com.aol.mvp.testcase.TestRegistrationProduct">
 				<methods>
 					<include name="testInvalidPassword" />
 				</methods>
@@ -126,7 +126,7 @@
 			<classes>
 				<parameter name="username" value="ritsmvptest50yt" />
 				<parameter name="password" value="qwe123" />
-				<class name="com.aol.mvp.testcase.TestInputPage">
+				<class name="com.aol.mvp.testcase.TestRegistrationProduct">
 					<methods>
 						<include name="testIneligibleUser" />
 					</methods>

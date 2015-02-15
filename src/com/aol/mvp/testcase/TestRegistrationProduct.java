@@ -12,9 +12,9 @@ import com.aol.common.model.user.Account;
 import com.aol.mvp.ui.page.ErrorIneligiblePage;
 import com.aol.mvp.ui.page.LoginPage;
 
-public class TestInputPage extends UITestBase {
+public class TestRegistrationProduct extends UITestBase {
 
-	private static final Log LOG = LogFactory.getLog(TestInputPage.class);
+	private static final Log LOG = LogFactory.getLog(TestRegistrationProduct.class);
 	
 
 	@Parameters({"accountType", "username", "password", "asqQuestion", "asqAnswer", "countryCode"})
