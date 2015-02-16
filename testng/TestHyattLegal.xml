@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE node [
+	<!ENTITY TestRegistrationProduct SYSTEM "testng/TestRegistrationProduct.xml">
+]>
 <suite name="Suite" parallel="false">
 
 	<parameter name="env" value="qa" />
@@ -59,17 +62,12 @@
 	</test> -->
 
 	<!-- 99% of all desktop browsers are at least this big -->
-  	<test name="Test_MostDesktopBrowsersMininumSize">
+   	<test name="Test_MostDesktopBrowsersMininumSize">
 		<classes>				
 			<parameter name="width" value="1024" />
 			<parameter name="height" value="768" />
 			<parameter name="username" value="ritsmvp6a69a1" />
 			<parameter name="password" value="qwe123" />
-			<class name="com.aol.mvp.testcase.TestLandingPage" />
-			<class name="com.aol.mvp.testcase.TestRegistrationProduct" />
-			<methods>
-					<include name="testValidUser" />
-			</methods>
 			<class name="com.aol.mvp.testcase.TestDownloadProduct">
 				<methods>
 					<include name="downloadTest" />
@@ -78,38 +76,6 @@
 		</classes>
 	</test>
 	
- 	<test name="Test_InValidUser">
-		<classes>
-			<parameter name="username" value="notARealUser" />
-			<parameter name="password" value="qwe123" />
-			<class name="com.aol.mvp.testcase.TestRegistrationProduct">
-				<methods>
-					<include name="testInvalidUser" />
-				</methods>
-			</class>
-		</classes>
-	</test>
- 	<test name="Test_InValidPassword">
-		<classes>
-			<parameter name="username" value="ritsmvp6a69a1" />
-			<parameter name="password" value="badPassword" />
-			<class name="com.aol.mvp.testcase.TestRegistrationProduct">
-				<methods>
-					<include name="testInvalidPassword" />
-				</methods>
-			</class>
-		</classes>
-	</test>
-	<test name="Test_IneligibleUser">
-			<classes>
-				<parameter name="username" value="ritsmvptest50yt" />
-				<parameter name="password" value="qwe123" />
-				<class name="com.aol.mvp.testcase.TestRegistrationProduct">
-					<methods>
-						<include name="testIneligibleUser" />
-					</methods>
-				</class>
-			</classes>
-	</test>	
+	&TestRegistrationProduct;
 
 </suite>

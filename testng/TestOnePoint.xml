@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE node [
+	<!ENTITY TestRegistrationProduct SYSTEM "testng/TestRegistrationProduct.xml">
+]>
 <suite name="Suite" parallel="false">
 
 	<parameter name="env" value="qa" />
@@ -87,11 +90,6 @@
 			<parameter name="username" value="ritsmvp6a69a1" />
 			<parameter name="password" value="qwe123" />
 			<parameter name="mobileVersion" value="true" />			
-			<class name="com.aol.mvp.testcase.TestLandingPage" />
- 			<class name="com.aol.mvp.testcase.TestRegistrationProduct" />
-			<methods>
-					<include name="testValidUser" />
-			</methods>
 			<class name="com.aol.mvp.testcase.TestDownloadProduct">
 				<methods>
 					<include name="downloadTest" />
@@ -99,39 +97,7 @@
 			</class>
 		</classes>
 	</test>	
-
- 	<test name="Test_InValidUser">
-		<classes>
-			<parameter name="username" value="notARealUser" />
-			<parameter name="password" value="qwe123" />
-			<class name="com.aol.mvp.testcase.TestRegistrationProduct">
-				<methods>
-					<include name="testInvalidUser" />
-				</methods>
-			</class>
-		</classes>
-	</test>
- 	<test name="Test_InValidPassword">
-		<classes>
-			<parameter name="username" value="ritsmvp6a69a1" />
-			<parameter name="password" value="badPassword" />
-			<class name="com.aol.mvp.testcase.TestRegistrationProduct">
-				<methods>
-					<include name="testInvalidPassword" />
-				</methods>
-			</class>
-		</classes>
-	</test>
-	<test name="Test_IneligibleUser">
-			<classes>
-				<parameter name="username" value="ritsmvptest50yt" />
-				<parameter name="password" value="qwe123" />
-				<class name="com.aol.mvp.testcase.TestRegistrationProduct">
-					<methods>
-						<include name="testIneligibleUser" />
-					</methods>
-				</class>
-			</classes>
-	</test>
  
+ 	&TestRegistrationProduct;
+ 	
 </suite>
