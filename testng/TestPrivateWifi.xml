@@ -99,6 +99,7 @@
 			<parameter name="height" value="768" />
 			<parameter name="username" value="ritsmvp6a69a1" />
 			<parameter name="password" value="qwe123" />
+			<parameter name="expectedErrorText" value="You or another individual on your AOL account has already activated all the Private WiFi subscriptions available with your AOL Advantage plan." />
 			<class name="com.aol.mvp.testcase.TestDownloadProduct">
 				<methods>
 					<include name="maxDownloadErrorTest" />

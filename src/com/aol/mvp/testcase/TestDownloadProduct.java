@@ -39,11 +39,11 @@ public class TestDownloadProduct extends UITestBase {
 		}
 	}
 	
-	@Parameters({"accountType", "username", "password", "asqQuestion", "asqAnswer", "countryCode"})
+	@Parameters({"accountType", "username", "password", "asqQuestion", "asqAnswer", "countryCode", "expectedErrorText"})
 	@Test
 	public void maxDownloadErrorTest(String accountType, String username, String password,
 			@Optional("Question") String asqQuestion, @Optional("1234") String asqAnswer,
-			@Optional("us") String countryCode)
+			@Optional("us") String countryCode, @Optional("You have reached the maximum number of activations") String expectedErrorText)
 	{
 		createAccount(accountType, username, password, asqQuestion, asqAnswer, countryCode);
 		landingPage.openLandingPage(envProps);
@@ -53,7 +53,7 @@ public class TestDownloadProduct extends UITestBase {
 		try {
 			loginPage.login(account);
 			Assert.assertTrue(StringUtils.startsWith(downloadPage.getMaxDownloadErrorText(), 
-					"You have reached the maximum number of activations."));
+					expectedErrorText));
 		} catch (Exception e) {
 			//TODO: handle screenshots with a listener
 			captureScreenshotOnFailure("signIn_" + getErrorScreenshotName(account.getUsername()));
