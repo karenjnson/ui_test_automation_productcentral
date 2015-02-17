@@ -62,17 +62,12 @@
 	</test> -->
 
  	<!-- 99% of all desktop browsers are at least this big -->
-  	<test name="Test_MostDesktopBrowsersMininumSize">
+   	<test name="Test_MostDesktopBrowsersMininumSize">
 		<classes>				
 			<parameter name="width" value="1024" />
 			<parameter name="height" value="768" />
 			<parameter name="username" value="ritsmvp6a69a1" />
 			<parameter name="password" value="qwe123" />
-			<class name="com.aol.mvp.testcase.TestLandingPage" />
-			<class name="com.aol.mvp.testcase.TestRegistrationProduct" />
-			<methods>
-					<include name="testValidUser" />
-			</methods>
 			<class name="com.aol.mvp.testcase.TestDownloadProduct">
 				<methods>
 					<include name="downloadTest" />
@@ -82,7 +77,7 @@
 	</test>
 	
 	<!-- 99% of all Mobile browsers are at least this big -->
-  	<test name="Test_MobileVersion">
+   	<test name="Test_MobileVersion">
 		<classes>				
 			<parameter name="width" value="1024" />
 			<parameter name="height" value="768" />
@@ -93,6 +88,20 @@
 			<class name="com.aol.mvp.testcase.TestDownloadProduct">
 				<methods>
 					<include name="downloadTest" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+	
+  	<test name="Test_MaxDowloadError">
+		<classes>				
+			<parameter name="width" value="1024" />
+			<parameter name="height" value="768" />
+			<parameter name="username" value="ritsmvp6a69a1" />
+			<parameter name="password" value="qwe123" />
+			<class name="com.aol.mvp.testcase.TestDownloadProduct">
+				<methods>
+					<include name="maxDownloadErrorTest" />
 				</methods>
 			</class>
 		</classes>

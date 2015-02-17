@@ -2,7 +2,6 @@ package com.aol.mvp.ui.page;
 
 import java.util.Properties;
 
-import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.openqa.selenium.By;
@@ -19,19 +18,15 @@ public class PrivateWifiPage extends FullPage implements LandingPage, LoginPage,
 	}
 
 
-	public boolean validateDownloadText()
+	public String getDownloadNowText()
 	{
-		if(driver.findElement(By.xpath("html/body/section[1]/div/div/div[1]/div[2]/div/h1")).isDisplayed()) return true;
-		return false;
-
+		return driver.findElement(By.xpath("html/body/section[1]/div/div/div[1]/div[2]/div/h1")).getText();
 	}
 
 
-	public boolean validateMaxErrorText()
+	public String getMaxDownloadErrorText()
 	{
-		if(driver.findElement(By.xpath("html/body/section/div/div/h3")).isDisplayed()) return true;
-		return false;
-
+		return driver.findElement(By.xpath("html/body/section/div/div/p")).getText();
 	}
 
 

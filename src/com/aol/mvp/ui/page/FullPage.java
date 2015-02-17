@@ -2,16 +2,12 @@ package com.aol.mvp.ui.page;
 
 import java.util.Properties;
 
-import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
 
 import com.aol.automation.webdriver.WebDriverWrapper;
-import com.aol.supportportal.ui.page.MyAccountsPage;
-import com.aol.supportportal.ui.page.UkMyAccountsPage;
-import com.aol.supportportal.ui.page.UsMyAccountsPage;
 import com.aol.common.model.user.Account;
 import com.aol.common.ui.login.UILogin;
 
@@ -129,23 +125,16 @@ public abstract class FullPage {
 		}
 	}
 
-	public boolean validateInvalidUserText() {
-		if(StringUtils.contains(driver.findElement(By.id("snPwdErr")).getText(), "Oops,due to an unexpected error we are unable to sign you in at this time. Please try again later")) return true;
-		return false;
+	public String getInvalidUserText() {
+		return driver.findElement(By.id("snPwdErr")).getText();
 	}
 	
-	public boolean validateInvalidPasswordText() {
-		if(StringUtils.contains(driver.findElement(By.id("snPwdErr")).getText(), "Incorrect Username or Password")) return true;
-		return false;
+	public String getInvalidPasswordText() {
+		return driver.findElement(By.id("snPwdErr")).getText();
 	}
 
-	
-	
-
-	public boolean validateIneligibleText() {
-		if(StringUtils.contains(driver.findElement(By.className("small-12")).getText(), "it appears that your username is not eligible")) return true;
-		return false;
-
+	public String getIneligibleText() {
+		return driver.findElement(By.className("small-12")).getText();
 	}
 
 	private static final By MY_ACCT_LOC = By.xpath("//*[@id='myAccount']/a");

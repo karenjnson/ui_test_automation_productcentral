@@ -7,8 +7,6 @@ import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-import com.aol.common.model.user.ASQ;
-import com.aol.common.model.user.Account;
 import com.aol.mvp.ui.page.ErrorIneligiblePage;
 import com.aol.mvp.ui.page.LoginPage;
 
@@ -23,11 +21,8 @@ public class TestRegistrationProduct extends UITestBase {
 			@Optional("Question") String asqQuestion, @Optional("1234") String asqAnswer,
 			@Optional("us") String countryCode)
 	{
-		ASQ accountSecurityQAndA = new ASQ(asqQuestion, asqAnswer);
-		account = new Account(accountType, username, password, accountSecurityQAndA, countryCode);
-
+		createAccount(accountType, username, password, asqQuestion, asqAnswer, countryCode);
 		landingPage.openLandingPage(envProps);
-
 		eyes.checkWindow(productName+" Landing Page");
 		LoginPage loginPage = landingPage.getStarted();
 
@@ -48,15 +43,14 @@ public class TestRegistrationProduct extends UITestBase {
 	public void testIneligibleUser(String accountType, String username, String password,
 			@Optional("Question") String asqQuestion, @Optional("1234") String asqAnswer,
 			@Optional("us") String countryCode) {
-		ASQ accountSecurityQAndA = new ASQ(asqQuestion, asqAnswer);
-		account = new Account(accountType, username, password, accountSecurityQAndA, countryCode);
-
+		
+		createAccount(accountType, username, password, asqQuestion, asqAnswer, countryCode);
 		landingPage.openLandingPage(envProps);
 		LoginPage loginPage = landingPage.getStarted();
 
 		try {
 			ErrorIneligiblePage ineligiblePage = loginPage.loginWithIneligibleUserCredentials(account);
-			Assert.assertEquals(true, ineligiblePage.validateIneligibleText());
+			Assert.assertEquals("it appears that your username is not eligible", ineligiblePage.getIneligibleText());
 
 		} catch (Exception e) {
 			//TODO: handle screenshots with a listener
@@ -71,16 +65,15 @@ public class TestRegistrationProduct extends UITestBase {
 	public void testInvalidUser(String accountType, String username, String password,
 			@Optional("Question") String asqQuestion, @Optional("1234") String asqAnswer,
 			@Optional("us") String countryCode) {
-		ASQ accountSecurityQAndA = new ASQ(asqQuestion, asqAnswer);
-		account = new Account(accountType, username, password, accountSecurityQAndA, countryCode);
 
+		createAccount(accountType, username, password, asqQuestion, asqAnswer, countryCode);
 		landingPage.openLandingPage(envProps);
 		LoginPage loginPage = landingPage.getStarted();
 
 		try {
 			boolean actual = loginPage.login(account);
 			Assert.assertEquals(true, actual);
-			Assert.assertEquals(true, loginPage.validateInvalidUserText());
+			Assert.assertEquals("Oops,due to an unexpected error we are unable to sign you in at this time. Please try again later", loginPage.getInvalidUserText());
 
 		} catch (Exception e) {
 			//TODO: handle screenshots with a listener
@@ -95,16 +88,15 @@ public class TestRegistrationProduct extends UITestBase {
 	public void testInvalidPassword(String accountType, String username, String password,
 			@Optional("Question") String asqQuestion, @Optional("1234") String asqAnswer,
 			@Optional("us") String countryCode) {
-		ASQ accountSecurityQAndA = new ASQ(asqQuestion, asqAnswer);
-		account = new Account(accountType, username, password, accountSecurityQAndA, countryCode);
 
+		createAccount(accountType, username, password, asqQuestion, asqAnswer, countryCode);
 		landingPage.openLandingPage(envProps);
 		LoginPage loginPage = landingPage.getStarted();
 
 		try {
 			boolean actual = loginPage.login(account);
 			Assert.assertEquals(true, actual);
-			Assert.assertEquals(true, loginPage.validateInvalidPasswordText());
+			Assert.assertEquals("Incorrect Username or Password", loginPage.getInvalidPasswordText());
 
 		} catch (Exception e) {
 			//TODO: handle screenshots with a listener
@@ -113,5 +105,4 @@ public class TestRegistrationProduct extends UITestBase {
 			Assert.fail("Unable to login: " + e.getMessage());
 		}
 	}
-
 }

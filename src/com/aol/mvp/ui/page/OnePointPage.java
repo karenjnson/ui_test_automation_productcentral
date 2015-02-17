@@ -19,19 +19,15 @@ public class OnePointPage extends FullPage implements LandingPage, LoginPage, Do
 	}
 
 
-	public boolean validateDownloadText()
+	public String getDownloadNowText()
 	{
-		if(driver.findElement(By.xpath("html/body/section[1]/div/div/div[1]/div[2]/div/h1")).isDisplayed()) return true;
-		return false;
-
+		return driver.findElement(By.xpath("html/body/form/div[3]/table/tr/td/span")).getText();
 	}
 
 
-	public boolean validateMaxErrorText()
+	public String getMaxDownloadErrorText()
 	{
-		if(driver.findElement(By.xpath("html/body/section/div/div/h3")).isDisplayed()) return true;
-		return false;
-
+		return driver.findElement(By.xpath("html/body/section/div/div/p")).getText();
 	}
 
 

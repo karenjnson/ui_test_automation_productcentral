@@ -7,30 +7,22 @@ import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-import com.aol.common.model.user.ASQ;
-import com.aol.common.model.user.Account;
-
-public class TestLandingPage extends UITestBase{
+public class TestLandingPage extends UITestBase {
 
 	private static final Log LOG = LogFactory.getLog(TestLandingPage.class);
-	
 
-	@Parameters({"accountType", "username", "password", "asqQuestion", "asqAnswer", "countryCode"})
+	@Parameters({ "accountType", "username", "password", "asqQuestion", "asqAnswer", "countryCode" })
 	@Test
-	public void testLandingPage(String accountType, String username, String password,
-			@Optional("Question") String asqQuestion, @Optional("1234") String asqAnswer,
-			@Optional("us") String countryCode)
-	{
-		ASQ accountSecurityQAndA = new ASQ(asqQuestion, asqAnswer);
-		account = new Account(accountType, username, password, accountSecurityQAndA, countryCode);
-
-		landingPage.openLandingPage(envProps);
-
-		eyes.checkWindow(productName+" Landing Page");
+	public void testLandingPage(String accountType, String username, String password, @Optional("Question") String asqQuestion,
+			@Optional("1234") String asqAnswer, @Optional("us") String countryCode) {
 		
+		createAccount(accountType, username, password, asqQuestion, asqAnswer, countryCode);
+		landingPage.openLandingPage(envProps);
+		eyes.checkWindow(productName + " Landing Page");
+
 		// page may have Mobile version
-		if(mobileVersion){
+		if (mobileVersion) {
 			driver.findElement(By.linkText("Mobile Version")).click();
 		}
-	}	
+	}
 }

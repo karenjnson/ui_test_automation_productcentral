@@ -17,6 +17,7 @@ import org.testng.annotations.Parameters;
 
 import com.aol.automation.webdriver.WebDriverFactory;
 import com.aol.automation.webdriver.WebDriverWrapper;
+import com.aol.common.model.user.ASQ;
 import com.aol.common.model.user.Account;
 import com.aol.common.util.io.IOUtils;
 import com.aol.common.util.screen.ScreenUtil;
@@ -211,6 +212,11 @@ public abstract class UITestBase {
 			LOG.error("Sleep interupted: " + e.getMessage());
 			e.printStackTrace();
 		}
+	}
+	
+	protected void createAccount(String accountType, String username, String password, String asqQuestion, String asqAnswer, String countryCode) {
+		ASQ accountSecurityQAndA = new ASQ(asqQuestion, asqAnswer);
+		account = new Account(accountType, username, password, accountSecurityQAndA, countryCode);
 	}
 	
 	private static final String CONFIG_DIR = "resources/config";
