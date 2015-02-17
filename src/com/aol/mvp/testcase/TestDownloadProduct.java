@@ -27,7 +27,8 @@ public class TestDownloadProduct extends UITestBase {
 
 		try {
 			loginPage.login(account);
-			Assert.assertEquals("", downloadPage.getDownloadNowText());
+			//TODO: need to get actual value to assert
+			Assert.assertEquals("????", downloadPage.getDownloadNowText());
 
 		} catch (Exception e) {
 			//TODO: handle screenshots with a listener
@@ -51,7 +52,8 @@ public class TestDownloadProduct extends UITestBase {
 
 		try {
 			loginPage.login(account);
-			Assert.assertTrue(StringUtils.startsWith(downloadPage.getMaxDownloadErrorText(), "You have reached the maximum number of activations included with this product."));
+			Assert.assertTrue(StringUtils.startsWith(downloadPage.getMaxDownloadErrorText(), 
+					"You have reached the maximum number of activations."));
 		} catch (Exception e) {
 			//TODO: handle screenshots with a listener
 			captureScreenshotOnFailure("signIn_" + getErrorScreenshotName(account.getUsername()));

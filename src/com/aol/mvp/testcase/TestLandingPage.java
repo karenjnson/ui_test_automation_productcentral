@@ -22,7 +22,7 @@ public class TestLandingPage extends UITestBase {
 
 		// page may have Mobile version
 		if (mobileVersion) {
-			driver.findElement(By.linkText("Mobile Version")).click();
+			landingPage.clickMobileVersion();
 		}
 	}
 }

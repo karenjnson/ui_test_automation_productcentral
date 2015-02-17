@@ -1,5 +1,6 @@
 package com.aol.mvp.testcase;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.testng.Assert;
@@ -50,7 +51,7 @@ public class TestRegistrationProduct extends UITestBase {
 
 		try {
 			ErrorIneligiblePage ineligiblePage = loginPage.loginWithIneligibleUserCredentials(account);
-			Assert.assertEquals("it appears that your username is not eligible", ineligiblePage.getIneligibleText());
+			Assert.assertTrue(StringUtils.contains(ineligiblePage.getIneligibleText(), "it appears that your username is not eligible"));
 
 		} catch (Exception e) {
 			//TODO: handle screenshots with a listener
@@ -73,7 +74,7 @@ public class TestRegistrationProduct extends UITestBase {
 		try {
 			boolean actual = loginPage.login(account);
 			Assert.assertEquals(true, actual);
-			Assert.assertEquals("Oops,due to an unexpected error we are unable to sign you in at this time. Please try again later", loginPage.getInvalidUserText());
+			Assert.assertEquals("Error: Oops,due to an unexpected error we are unable to sign you in at this time. Please try again later.", loginPage.getInvalidUserText());
 
 		} catch (Exception e) {
 			//TODO: handle screenshots with a listener
@@ -96,7 +97,7 @@ public class TestRegistrationProduct extends UITestBase {
 		try {
 			boolean actual = loginPage.login(account);
 			Assert.assertEquals(true, actual);
-			Assert.assertEquals("Incorrect Username or Password", loginPage.getInvalidPasswordText());
+			Assert.assertEquals("Error: Incorrect Username or Password.", loginPage.getInvalidPasswordText());
 
 		} catch (Exception e) {
 			//TODO: handle screenshots with a listener

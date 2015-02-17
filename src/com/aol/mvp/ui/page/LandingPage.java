@@ -7,4 +7,5 @@ public interface LandingPage {
 	public LoginPage getStarted();
 	public DownloadPage downloadNow();
 	public boolean checkHeader();
+	public void clickMobileVersion();
 }

@@ -136,6 +136,10 @@ public abstract class FullPage {
 	public String getIneligibleText() {
 		return driver.findElement(By.className("small-12")).getText();
 	}
+	
+	public void clickMobileVersion(){
+		driver.findElement(By.linkText("Mobile Version")).click();
+	}
 
 	private static final By MY_ACCT_LOC = By.xpath("//*[@id='myAccount']/a");
 	private static final By SECURITY_ANSWER_LOC = By.id("asqanswer");
