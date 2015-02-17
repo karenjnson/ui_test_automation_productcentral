@@ -91,7 +91,7 @@ public class PrivateWifiMobile extends UITestBase{
 
 		try {
 			privateWifi.signIn(account);
-			Assert.assertTrue(privateWifi.validateDownloadText());
+			Assert.assertEquals(true, privateWifi.validateDownloadText());
 
 		} catch (Exception e) {
 			//TODO: handle screenshots with a listener
@@ -118,7 +118,7 @@ public class PrivateWifiMobile extends UITestBase{
 
 		try {
 			privateWifi.signIn(account);
-			Assert.assertTrue(privateWifi.validateMaxErrorText());
+			Assert.assertEquals(true, privateWifi.validateMaxErrorText());
 
 		} catch (Exception e) {
 			//TODO: handle screenshots with a listener

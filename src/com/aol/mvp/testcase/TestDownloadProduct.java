@@ -31,7 +31,7 @@ public class TestDownloadProduct extends UITestBase {
 
 		try {
 			loginPage.login(account);
-			Assert.assertTrue(downloadPage.validateDownloadText());
+			Assert.assertEquals(true, downloadPage.validateDownloadText());
 
 		} catch (Exception e) {
 			//TODO: handle screenshots with a listener

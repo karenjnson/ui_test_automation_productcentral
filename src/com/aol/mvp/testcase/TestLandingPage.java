@@ -9,7 +9,6 @@ import org.testng.annotations.Test;
 
 import com.aol.common.model.user.ASQ;
 import com.aol.common.model.user.Account;
-import com.aol.mvp.ui.page.FullPage;
 
 public class TestLandingPage extends UITestBase{
 

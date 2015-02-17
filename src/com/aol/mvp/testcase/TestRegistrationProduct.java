@@ -56,7 +56,7 @@ public class TestRegistrationProduct extends UITestBase {
 
 		try {
 			ErrorIneligiblePage ineligiblePage = loginPage.loginWithIneligibleUserCredentials(account);
-			Assert.assertTrue(ineligiblePage.validateIneligibleText());
+			Assert.assertEquals(true, ineligiblePage.validateIneligibleText());
 
 		} catch (Exception e) {
 			//TODO: handle screenshots with a listener
@@ -79,8 +79,8 @@ public class TestRegistrationProduct extends UITestBase {
 
 		try {
 			boolean actual = loginPage.login(account);
-			Assert.assertTrue(actual);
-			Assert.assertTrue(loginPage.validateInvalidUserText());
+			Assert.assertEquals(true, actual);
+			Assert.assertEquals(true, loginPage.validateInvalidUserText());
 
 		} catch (Exception e) {
 			//TODO: handle screenshots with a listener
@@ -103,8 +103,8 @@ public class TestRegistrationProduct extends UITestBase {
 
 		try {
 			boolean actual = loginPage.login(account);
-			Assert.assertTrue(actual);
-			Assert.assertTrue(loginPage.validateInvalidPasswordText());
+			Assert.assertEquals(true, actual);
+			Assert.assertEquals(true, loginPage.validateInvalidPasswordText());
 
 		} catch (Exception e) {
 			//TODO: handle screenshots with a listener

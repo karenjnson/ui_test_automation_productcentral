@@ -60,7 +60,7 @@ public class HyattLegal extends UITestBase{
 
 		try {
 			hyattLegal.signIn(account.getUsername(),account.getPassword());
-			Assert.assertTrue(hyattLegal.checkHeader());
+			Assert.assertEquals(true, hyattLegal.checkHeader());
 			Thread.sleep(1000);
 		} catch (Exception e) {
 			//TODO: handle screenshots with a listener
