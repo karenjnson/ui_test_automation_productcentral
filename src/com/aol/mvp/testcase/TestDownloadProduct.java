@@ -22,11 +22,23 @@ public class TestDownloadProduct extends UITestBase {
 	{
 		createAccount(accountType, username, password, asqQuestion, asqAnswer, countryCode);
 		landingPage.openLandingPage(envProps);
-		LoginPage loginPage = landingPage.getStarted();
-		DownloadPage downloadPage = landingPage.downloadNow();
+		
+		LoginPage loginPage = null;
+		// page may have Mobile version
+		if (mobileVersion) {
+			landingPage.clickMobileVersion();
+			// click device type link
+			loginPage = landingPage.clickDeviceTypeLink(deviceType);			
+		}else{
+			loginPage = landingPage.getStarted();			
+		}
+		
+				
+		
 
 		try {
 			loginPage.login(account);
+			DownloadPage downloadPage = loginPage.downloadNow();	
 			//TODO: need to get actual value to assert
 			Assert.assertEquals("????", downloadPage.getDownloadNowText());
 
@@ -48,10 +60,10 @@ public class TestDownloadProduct extends UITestBase {
 		createAccount(accountType, username, password, asqQuestion, asqAnswer, countryCode);
 		landingPage.openLandingPage(envProps);
 		LoginPage loginPage = landingPage.getStarted();
-		DownloadPage downloadPage = landingPage.downloadNow();
 
 		try {
 			loginPage.login(account);
+			DownloadPage downloadPage = loginPage.downloadNow();
 			Assert.assertTrue(StringUtils.startsWith(downloadPage.getMaxDownloadErrorText(), 
 					expectedErrorText));
 		} catch (Exception e) {

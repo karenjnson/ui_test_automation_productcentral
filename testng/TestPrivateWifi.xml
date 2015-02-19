@@ -77,14 +77,32 @@
 	</test>
 	
 	<!-- 99% of all Mobile browsers are at least this big -->
-   	<test name="Test_MobileVersion">
+	<test name="Test_MobileVersionIos">
 		<classes>				
 			<parameter name="width" value="1024" />
 			<parameter name="height" value="768" />
 			<parameter name="mobile" value="true" />
 			<parameter name="username" value="ritsmvp6a69a1" />
 			<parameter name="password" value="qwe123" />
-			<parameter name="mobileVersion" value="true" />			
+			<parameter name="mobileVersion" value="true" />		
+			<parameter name="deviceType" value="ios" />
+			<class name="com.aol.mvp.testcase.TestDownloadProduct">
+				<methods>
+					<include name="downloadTest" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+	
+	   	<test name="Test_MobileVersionAndroid">
+		<classes>				
+			<parameter name="width" value="1024" />
+			<parameter name="height" value="768" />
+			<parameter name="mobile" value="true" />
+			<parameter name="username" value="ritsmvp6a69a1" />
+			<parameter name="password" value="qwe123" />
+			<parameter name="mobileVersion" value="true" />
+			<parameter name="deviceType" value="android" />		
 			<class name="com.aol.mvp.testcase.TestDownloadProduct">
 				<methods>
 					<include name="downloadTest" />

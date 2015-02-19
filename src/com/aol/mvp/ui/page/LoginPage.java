@@ -7,5 +7,5 @@ public interface LoginPage {
 	public ErrorIneligiblePage loginWithIneligibleUserCredentials(Account account);
 	public String getInvalidUserText();
 	public String getInvalidPasswordText();
-	
+	public DownloadPage downloadNow();
 }

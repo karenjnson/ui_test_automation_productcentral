@@ -43,6 +43,12 @@ public abstract class PhotoBucketPage extends FullPage implements LandingPage, L
 	public DownloadPage downloadNow() {
 		return null;
 	}
+	
+	@Override
+	public LoginPage clickDeviceTypeLink(String deviceType){		
+		driver.findElement(By.className(deviceType)).click();
+		return this;
+	}
 
 	@Override
 	public ErrorIneligiblePage loginWithIneligibleUserCredentials(Account account) {

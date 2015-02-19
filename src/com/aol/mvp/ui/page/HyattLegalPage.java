@@ -59,4 +59,10 @@ public class HyattLegalPage extends FullPage implements LandingPage, LoginPage, 
 		signIn(account);
 		return this;
 	}
+	
+	public LoginPage clickDeviceTypeLink(String deviceType){		
+		driver.findElement(By.className(deviceType)).click();
+		return this;
+	}
+
 }

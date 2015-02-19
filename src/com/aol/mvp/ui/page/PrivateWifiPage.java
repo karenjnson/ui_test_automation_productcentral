@@ -23,6 +23,10 @@ public class PrivateWifiPage extends FullPage implements LandingPage, LoginPage,
 		return driver.findElement(By.xpath("html/body/section[1]/div/div/div[1]/div[2]/div/h1")).getText();
 	}
 
+	public LoginPage clickDeviceTypeLink(String deviceType){		
+		driver.findElement(By.className(deviceType)).click();
+		return this;
+	}
 
 	public String getMaxDownloadErrorText()
 	{

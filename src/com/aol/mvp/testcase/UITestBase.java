@@ -45,6 +45,7 @@ public abstract class UITestBase {
 	protected String productName;
 	protected LandingPage landingPage;
 	protected boolean mobileVersion = false;
+	protected String deviceType = null;
 
 
 	@BeforeSuite(alwaysRun=true)
@@ -110,6 +111,7 @@ public abstract class UITestBase {
 		
 		if(StringUtils.isNotBlank(testContext.getCurrentXmlTest().getParameter("mobileVersion"))){
 			mobileVersion  = Boolean.valueOf(testContext.getCurrentXmlTest().getParameter("mobileVersion"));
+			deviceType = testContext.getCurrentXmlTest().getParameter("deviceType");
 		}
 	}
 
