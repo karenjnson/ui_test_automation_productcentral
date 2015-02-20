@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 import java.util.Properties;
 
+import org.apache.commons.lang3.BooleanUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -70,7 +71,7 @@ public abstract class UITestBase {
 		
 		if(eyes == null){
 			eyes = new Eyes();
-	        eyes.setApiKey(mainProps.getProperty("APPLITOOLS_API_KEY"));
+	        eyes.setApiKey(getApplitoolsApiKey());
 	        eyes.setMatchLevel(MatchLevel.LAYOUT);
 		}
 		
@@ -88,7 +89,7 @@ public abstract class UITestBase {
 			String browserType, String width, String height, String productName, @Optional("")String browserVersion)
 	{
 		
-		disableEyes = StringUtils.equalsIgnoreCase(mainProps.getProperty("DISABLE_EYES"), "Y")?true:false;
+		disableEyes = shouldDisableEyes();
 		
 		LOG.debug("width: " + width);
 		LOG.debug("Height: " + height);
@@ -119,15 +120,6 @@ public abstract class UITestBase {
 			mobileVersion  = Boolean.valueOf(testContext.getCurrentXmlTest().getParameter("mobileVersion"));
 			deviceType = testContext.getCurrentXmlTest().getParameter("deviceType");
 		}
-	}
-
-
-	private WebDriverFactory getDriverFactory(ITestContext testContext) {
-		if(driverFactory == null){
-			driverFactory = new WebDriverFactory(getGridProviders(testContext.getCurrentXmlTest().getParameter("gridProviders")));
-		}
-		
-		return driverFactory;
 	}
 
 
@@ -238,6 +230,24 @@ public abstract class UITestBase {
 	protected void checkWindow() {
 		eyes.checkWindow(null);
 	}
+	
+	private String getApplitoolsApiKey() {
+		return StringUtils.isNotBlank(System.getProperty("APPLITOOLS_API_KEY"))?System.getProperty("APPLITOOLS_API_KEY"):mainProps.getProperty("APPLITOOLS_API_KEY");
+	}
+	
+	private boolean shouldDisableEyes() {		
+		return StringUtils.isNotBlank(System.getProperty("DISABLE_EYES"))?BooleanUtils.toBoolean(System.getProperty("DISABLE_EYES")):BooleanUtils.toBoolean(mainProps.getProperty("DISABLE_EYES"));
+	}
+
+
+	private WebDriverFactory getDriverFactory(ITestContext testContext) {
+		if(driverFactory == null){
+			driverFactory = new WebDriverFactory(getGridProviders(testContext.getCurrentXmlTest().getParameter("gridProviders")));
+		}
+		
+		return driverFactory;
+	}
+
 	
 	private static final String CONFIG_DIR = "resources/config";
 	private static final String DEFAULT_GRID_PROVIDERS = "griddick";
