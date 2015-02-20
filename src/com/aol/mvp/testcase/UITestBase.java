@@ -46,6 +46,7 @@ public abstract class UITestBase {
 	protected LandingPage landingPage;
 	protected boolean mobileVersion = false;
 	protected String deviceType = null;
+	private boolean disableEyes = false;
 
 
 	@BeforeSuite(alwaysRun=true)
@@ -61,7 +62,7 @@ public abstract class UITestBase {
 		getConfigProperties();
 
 		/* NOTE: gridProviders is set to DEFAULT_GRID_PROVIDERS if user doesn't specify */
-		driverFactory = new WebDriverFactory(getGridProviders(gridProviders));		
+		driverFactory = new WebDriverFactory(getGridProviders(gridProviders));
 	}
 
 
@@ -86,6 +87,9 @@ public abstract class UITestBase {
 	public void beforeMethod(ITestContext testContext, Method method, String os,
 			String browserType, String width, String height, String productName, @Optional("")String browserVersion)
 	{
+		
+		disableEyes = StringUtils.equalsIgnoreCase(mainProps.getProperty("DISABLE_EYES"), "Y")?true:false;
+		
 		LOG.debug("width: " + width);
 		LOG.debug("Height: " + height);
 
@@ -98,7 +102,9 @@ public abstract class UITestBase {
 		
 		driver = getDriverFactory(testContext).getRemoteWebDriver(build, testName, os, browserType, browserVersion);
 
-		driver.openEyes(getEyes(), testName, productName+" "+testName, getRectangle(width, height));
+		if(!disableEyes){
+			driver.openEyes(getEyes(), testName, productName+" "+testName, getRectangle(width, height));
+		}
 
 		saveSessionId(testContext);
 		
@@ -129,7 +135,9 @@ public abstract class UITestBase {
 	protected void afterMethod() {
 		try {
 			// End visual testing. Validate visual correctness.
-			eyes.close();
+			if(eyes != null){
+				eyes.close();
+			}
 		} finally {
 			if (driver != null) {
 				LOG.info(Thread.currentThread().getName() + "-" + Thread.currentThread().getId() + " Clearing driver");
@@ -219,6 +227,16 @@ public abstract class UITestBase {
 	protected void createAccount(String accountType, String username, String password, String asqQuestion, String asqAnswer, String countryCode) {
 		ASQ accountSecurityQAndA = new ASQ(asqQuestion, asqAnswer);
 		account = new Account(accountType, username, password, accountSecurityQAndA, countryCode);
+	}
+	
+	protected void checkWindow(String suffix) {
+		if(!disableEyes){
+			eyes.checkWindow(productName+" "+suffix);
+		}
+	}
+	
+	protected void checkWindow() {
+		eyes.checkWindow(null);
 	}
 	
 	private static final String CONFIG_DIR = "resources/config";

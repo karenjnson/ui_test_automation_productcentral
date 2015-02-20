@@ -2,7 +2,6 @@ package com.aol.mvp.testcase;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.openqa.selenium.By;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
@@ -18,7 +17,7 @@ public class TestLandingPage extends UITestBase {
 		
 		createAccount(accountType, username, password, asqQuestion, asqAnswer, countryCode);
 		landingPage.openLandingPage(envProps);
-		eyes.checkWindow(productName + " Landing Page");
+		checkWindow("Landing Page");
 
 		// page may have Mobile version
 		if (mobileVersion) {

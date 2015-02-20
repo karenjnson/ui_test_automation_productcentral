@@ -24,12 +24,12 @@ public class TestRegistrationProduct extends UITestBase {
 	{
 		createAccount(accountType, username, password, asqQuestion, asqAnswer, countryCode);
 		landingPage.openLandingPage(envProps);
-		eyes.checkWindow(productName+" Landing Page");
+		checkWindow("Landing Page");
 		LoginPage loginPage = landingPage.getStarted();
 
 		try {
 			loginPage.login(account);
-			eyes.checkWindow(productName);
+			checkWindow();
 			Thread.sleep(1000);
 		} catch (Exception e) {
 			//TODO: handle screenshots with a listener
@@ -38,7 +38,7 @@ public class TestRegistrationProduct extends UITestBase {
 			Assert.fail("Error occured in submitting input page: " + e.getMessage());
 		}
 	}
-	
+
 	@Parameters({"accountType", "username", "password", "asqQuestion", "asqAnswer", "countryCode"})
 	@Test
 	public void testIneligibleUser(String accountType, String username, String password,
