@@ -1,4 +1,4 @@
-package com.aol.mvp.testcase;
+package com.aol.assist.testcase;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
@@ -8,8 +8,8 @@ import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-import com.aol.mvp.ui.page.ErrorIneligiblePage;
-import com.aol.mvp.ui.page.LoginPage;
+import com.aol.assist.ui.page.ErrorIneligiblePage;
+import com.aol.assist.ui.page.LoginPage;
 
 public class TestRegistrationProduct extends UITestBase {
 

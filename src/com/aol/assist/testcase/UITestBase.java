@@ -1,4 +1,4 @@
-package com.aol.mvp.testcase;
+package com.aol.assist.testcase;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
@@ -22,8 +22,8 @@ import com.aol.common.model.user.ASQ;
 import com.aol.common.model.user.Account;
 import com.aol.common.util.io.IOUtils;
 import com.aol.common.util.screen.ScreenUtil;
-import com.aol.mvp.ui.page.LandingPage;
-import com.aol.mvp.ui.page.LandingPageFactory;
+import com.aol.assist.ui.page.LandingPage;
+import com.aol.assist.ui.page.LandingPageFactory;
 import com.applitools.eyes.Eyes;
 import com.applitools.eyes.MatchLevel;
 import com.applitools.eyes.RectangleSize;

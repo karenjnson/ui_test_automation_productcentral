@@ -1,4 +1,4 @@
-package com.aol.mvp.ui.page;
+package com.aol.assist.ui.page;
 
 public interface ErrorIneligiblePage {
 	public String getIneligibleText();

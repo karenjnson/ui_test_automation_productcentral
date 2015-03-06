@@ -6,10 +6,10 @@ There is a pom.xml so you should be able to get all required dependencies with '
 The files for controlling tests are:
 
 	./resources/config/main.properties (use to set you Applitools Eyes API key)
-	./testng/TestExampleLifestore.xml   (controls which test suite to run, which browsers to use, which groups of tests to include/exclude, etc.)
+	./testng/TestAssistGetStarted.xml   (controls which test suite to run, which browsers to use, which groups of tests to include/exclude, etc.)
 
 
-Sample test suite is ui_test_automation_example/src/com/aol/example/testcase/TestExampleLifestore.java
+Sample test suite is ui_test_automation_assist/src/com/aol/assist/testcase/TestAssistGetStartedPage.java
 
 
 To stand up your own local instance of grid you'll need to:
@@ -26,7 +26,7 @@ RUN EXAMPLE TEST
 1. mvn eclipse:clean eclipse:eclipse
 2. mvn clean install
 3. via eclipse:
-	i. right+click testng/TestExampleLifestore.xml
+	i. right+click testng/TestAssistGetStarted.xml
 	ii. Run As > TestNG Suite
 
 

@@ -1,4 +1,4 @@
-package com.aol.mvp.testcase;
+package com.aol.assist.testcase;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;

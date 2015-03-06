@@ -1,4 +1,4 @@
-package com.aol.mvp.ui.page;
+package com.aol.assist.ui.page;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
@@ -16,13 +16,16 @@ public class LandingPageFactory {
 			defaultErr(productName);
 			return null;
 		}
+		
+		if ("AssistGetStarted".equalsIgnoreCase(productName)) return new AssistGetStartedPage(driver);
 
-		if ("HyattLegal".equalsIgnoreCase(productName)) return new HyattLegalPage(driver);
+
+/*		if ("HyattLegal".equalsIgnoreCase(productName)) return new HyattLegalPage(driver);
 		if ("PhotoBucketBasic".equalsIgnoreCase(productName)) return new PhotoBucketBasicPage(driver);
 		if ("PhotoBucketPlus".equalsIgnoreCase(productName)) return new PhotoBucketPlusPage(driver);
 		if ("OnePoint".equalsIgnoreCase(productName)) return new OnePointPage(driver);
 		if ("privateWifi".equalsIgnoreCase(productName) || "PrivateWifiMobile".equalsIgnoreCase(productName)) return new PrivateWifiPage(driver);
-		
+	*/	
 		defaultErr(productName);
 		return null;
 	}

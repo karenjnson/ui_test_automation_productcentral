@@ -1,4 +1,4 @@
-package com.aol.mvp.ui.page;
+package com.aol.assist.ui.page;
 
 import java.util.Properties;
 
@@ -9,18 +9,18 @@ import org.openqa.selenium.By;
 import com.aol.automation.webdriver.WebDriverWrapper;
 import com.aol.common.model.user.Account;
 
-public class PrivateWifiPage extends FullPage implements LandingPage, LoginPage, DownloadPage, ErrorIneligiblePage{
+public class AssistGetStartedPage extends FullPage implements LandingPage, LoginPage, DownloadPage, ErrorIneligiblePage{
 
-	public static final Log LOG = LogFactory.getLog(PrivateWifiPage.class);
+	public static final Log LOG = LogFactory.getLog(AssistGetStartedPage.class);
 
-	public PrivateWifiPage(WebDriverWrapper driver) {
+	public AssistGetStartedPage(WebDriverWrapper driver) {
 		super(driver);
 	}
 
 
 	public String getDownloadNowText()
 	{
-		return driver.findElement(By.xpath("html/body/section[1]/div/div/div[1]/div[2]/div/h1")).getText();
+		return driver.findElement(By.xpath("html/body/div/section[1]/div/div/div[1]/h1")).getText();
 	}
 
 	public LoginPage clickDeviceTypeLink(String deviceType){		
@@ -49,7 +49,7 @@ public class PrivateWifiPage extends FullPage implements LandingPage, LoginPage,
 	@Override
 	public void openLandingPage(Properties envProps) {
 
-		String url = envProps.getProperty("MVP.LANDING.URL.PRIVATEWIFI");
+		String url = envProps.getProperty("ASSIST.GETSTARTED.URL");
 
 		LOG.debug("Getting page: " + url);
 		driver.get(url);
