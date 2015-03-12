@@ -6,6 +6,8 @@ import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
+import com.aol.assist.ui.page.AssistPlansPage;
+
 public class TestAssistGetStarted extends UITestBase {
 
 	private static final Log LOG = LogFactory.getLog(TestAssistGetStarted.class);
@@ -18,8 +20,11 @@ public class TestAssistGetStarted extends UITestBase {
 		createAccount(accountType, username, password, asqQuestion, asqAnswer, countryCode);
 		landingPage.openLandingPage(envProps);
 		checkWindow("Landing Page");
+		
+		AssistPlansPage plansPage = landingPage.getStarted();
+		checkWindow("Plans Page");
 
-		landingPage.chooseOneTimeFix();
+		plansPage.chooseOneTimeFix();
 		checkWindow("OneTimeFix");
 	}
 }

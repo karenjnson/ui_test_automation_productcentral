@@ -2,7 +2,7 @@
 
 <suite name="Suite" parallel="false">
 
-	<parameter name="env" value="qa" />
+	<parameter name="env" value="prod" />
 	<parameter name="gridProviders" value="localhost" />
 
 	<parameter name="os" value="mac" />
@@ -14,7 +14,7 @@
 	<parameter name="platform" value="WINDOWS_CHROME" /> 
 	-->
 	
-	<parameter name="productName" value="AssistGetStarted" />
+	<parameter name="productName" value="Assist by AOL" />
 	<parameter name="accountType" value="sns" />
 	<parameter name="username" value="ritsmvp6a69a1" />
 	<parameter name="usernameMax" value="ritsmvp6a69a2" />
