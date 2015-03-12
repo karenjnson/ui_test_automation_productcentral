@@ -9,11 +9,11 @@ import org.openqa.selenium.By;
 import com.aol.automation.webdriver.WebDriverWrapper;
 import com.aol.common.model.user.Account;
 
-public class AssistGetStartedPage extends FullPage implements LandingPage, LoginPage, DownloadPage, ErrorIneligiblePage{
+public class AssistPlansPage extends FullPage implements LandingPage, LoginPage, DownloadPage, ErrorIneligiblePage{
 
-	public static final Log LOG = LogFactory.getLog(AssistGetStartedPage.class);
+	public static final Log LOG = LogFactory.getLog(AssistPlansPage.class);
 
-	public AssistGetStartedPage(WebDriverWrapper driver) {
+	public AssistPlansPage(WebDriverWrapper driver) {
 		super(driver);
 	}
 
@@ -49,7 +49,7 @@ public class AssistGetStartedPage extends FullPage implements LandingPage, Login
 	@Override
 	public void openLandingPage(Properties envProps) {
 
-		String url = envProps.getProperty("ASSIST.GETSTARTED.URL");
+		String url = envProps.getProperty("ASSIST.PLANS.URL");
 
 		LOG.debug("Getting page: " + url);
 		driver.get(url);
@@ -57,7 +57,7 @@ public class AssistGetStartedPage extends FullPage implements LandingPage, Login
 
 
 	@Override
-	public LoginPage getStarted() {
+	public AssistPlansPage getStarted() {
 		driver.findElement(By.linkText("Download Now")).click();
 		return this;		
 	}
@@ -78,4 +78,21 @@ public class AssistGetStartedPage extends FullPage implements LandingPage, Login
 		signIn(account);
 		return this;
 	}
+
+
+	@Override
+	public void chooseOneTimeFix() {
+		driver.findElement(ONE_TIME_FIX).click();
+		
+		
+	}
+	
+	private static final By ONE_TIME_FIX = By.linkText("One-Time Fix");
+
+	public FaqPage readFAQ() {
+		driver.findElement(FAQLINK).click();
+		return new FaqPage(driver);
+		
+	}
+	private static final By FAQLINK = By.linkText("FAQs");
 }

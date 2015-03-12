@@ -17,7 +17,7 @@ public class LandingPageFactory {
 			return null;
 		}
 		
-		if ("AssistGetStarted".equalsIgnoreCase(productName)) return new AssistGetStartedPage(driver);
+		if ("AssistGetStarted".equalsIgnoreCase(productName)) return new AssistLandingPage(driver);
 
 
 /*		if ("HyattLegal".equalsIgnoreCase(productName)) return new HyattLegalPage(driver);

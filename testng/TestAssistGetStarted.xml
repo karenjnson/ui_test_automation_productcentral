@@ -20,7 +20,7 @@
 	<parameter name="usernameMax" value="ritsmvp6a69a2" />
 	<parameter name="password" value="qwe123" />
 	<parameter name="width" value="1024" />
-	<parameter name="height" value="768" />
+	<parameter name="height" value="650" />
 	
 	<test name="Test_AssistGetStartedpage">
 		<classes>

@@ -19,9 +19,7 @@ public class TestAssistGetStarted extends UITestBase {
 		landingPage.openLandingPage(envProps);
 		checkWindow("Landing Page");
 
-		// page may have Mobile version
-		if (mobileVersion) {
-			landingPage.clickMobileVersion();
-		}
+		landingPage.chooseOneTimeFix();
+		checkWindow("OneTimeFix");
 	}
 }
