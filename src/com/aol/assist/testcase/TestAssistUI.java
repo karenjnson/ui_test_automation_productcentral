@@ -15,7 +15,7 @@ public class TestAssistUI extends UITestBase {
 
 	@Parameters({ "accountType", "username", "password", "asqQuestion", "asqAnswer", "countryCode" })
 	@Test
-	public void testLandingPage(String accountType, String username, String password, @Optional("Question") String asqQuestion,
+	public void testAssistUI(String accountType, String username, String password, @Optional("Question") String asqQuestion,
 			@Optional("1234") String asqAnswer, @Optional("us") String countryCode) {
 		
 		createAccount(accountType, username, password, asqQuestion, asqAnswer, countryCode);
@@ -36,7 +36,5 @@ public class TestAssistUI extends UITestBase {
 		
 		infopage.selectTos();
 		checkWindow("TOS");
-		
-		
 	}
 }

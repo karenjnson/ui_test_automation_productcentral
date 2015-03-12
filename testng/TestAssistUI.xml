@@ -2,11 +2,11 @@
 
 <suite name="Suite" parallel="false">
 
-	<parameter name="env" value="qa" />
+	<parameter name="env" value="prod" />
 	<parameter name="gridProviders" value="localhost" />
 
 	<parameter name="os" value="mac" />
-	<parameter name="browserType" value="firefox" />
+	<parameter name="browserType" value="chrome" />
     
 	<!-- OPTIONAL PARAMETERS -->
 	<!-- 
@@ -14,15 +14,15 @@
 	<parameter name="platform" value="WINDOWS_CHROME" /> 
 	-->
 	
-	<parameter name="productName" value="AssistGetStarted" />
+	<parameter name="productName" value="Assist by AOL" />
 	<parameter name="accountType" value="sns" />
 	<parameter name="username" value="ritsmvp6a69a1" />
 	<parameter name="usernameMax" value="ritsmvp6a69a2" />
 	<parameter name="password" value="qwe123" />
-	<parameter name="width" value="1024" />
+	<parameter name="width" value="1280" />
 	<parameter name="height" value="650" />
 	
-	<test name="Test_AssistGetStartedpage">
+	<test name="Test_AssistUI">
 		<classes>
 			<class name="com.aol.assist.testcase.TestAssistUI" />
 		</classes>

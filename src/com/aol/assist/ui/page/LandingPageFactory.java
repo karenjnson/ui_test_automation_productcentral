@@ -17,7 +17,7 @@ public class LandingPageFactory {
 			return null;
 		}
 		
-		if ("AssistGetStarted".equalsIgnoreCase(productName)) return new AssistLandingPage(driver);
+		if ("Assist by AOL".equalsIgnoreCase(productName)) return new AssistLandingPage(driver);
 
 
     	defaultErr(productName);

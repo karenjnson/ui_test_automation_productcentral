@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.aol.automation.ui</groupId>
-	<artifactId>ui-test-automation-base</artifactId>
+	<artifactId>ui-test-automation-assist</artifactId>
 	<packaging>jar</packaging>
 	<version>1.0</version>
 
@@ -83,7 +83,7 @@
 				</includes>
 			</resource>
 		</resources>
-		<finalName>ui_test_automation_base</finalName>
+		<finalName>ui_test_automation_assist</finalName>
 	</build>
 	<properties>
 		<maven.test.skip>true</maven.test.skip>

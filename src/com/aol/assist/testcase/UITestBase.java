@@ -103,9 +103,7 @@ public abstract class UITestBase {
 		
 		driver = getDriverFactory(testContext).getRemoteWebDriver(build, testName, os, browserType, browserVersion);
 
-		if(!disableEyes){
-			driver.openEyes(getEyes(), testName, productName+" "+testName, getRectangle(width, height));
-		}
+		driver.openEyes(getEyes(), testName, productName+" "+testName, getRectangle(width, height));
 
 		saveSessionId(testContext);
 		
@@ -222,13 +220,9 @@ public abstract class UITestBase {
 	}
 	
 	protected void checkWindow(String suffix) {
-		if(!disableEyes){
+		if (!disableEyes) {
 			eyes.checkWindow(productName+" "+suffix);
 		}
-	}
-	
-	protected void checkWindow() {
-		eyes.checkWindow(null);
 	}
 	
 	private String getApplitoolsApiKey() {

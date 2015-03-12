@@ -8,5 +8,4 @@ public interface LandingPage {
 	public boolean checkHeader();
 	public void clickMobileVersion();
 	public LoginPage clickDeviceTypeLink(String deviceType);
-	public void chooseOneTimeFix();
 }

@@ -58,10 +58,9 @@ public class AssistLandingPage extends FullPage implements LandingPage, LoginPag
 
 	@Override
 	public AssistPlansPage getStarted() {
-		driver.findElement(By.linkText("Download Now")).click();
+		driver.findElement(CALL_TO_ACTION_LOC).click();
 		return new AssistPlansPage(driver);		
 	}
-
 
 	@Override
 	public boolean checkHeader() {
@@ -79,13 +78,7 @@ public class AssistLandingPage extends FullPage implements LandingPage, LoginPag
 		return this;
 	}
 
-
-	@Override
-	public void chooseOneTimeFix() {
-		driver.findElement(ONE_TIME_FIX).click();
-		
-		
-	}
 	
-	private static final By ONE_TIME_FIX = By.linkText("One-Time Fix");
+	private static final By CALL_TO_ACTION_LOC = By.id("hero-content-cta");
+
 }
