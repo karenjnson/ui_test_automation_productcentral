@@ -6,7 +6,7 @@
 	<parameter name="gridProviders" value="localhost" />
 
 	<parameter name="os" value="mac" />
-	<parameter name="browserType" value="firefox" />
+	<parameter name="browserType" value="chrome" />
     
 	<!-- OPTIONAL PARAMETERS -->
 	<!-- 
@@ -33,7 +33,7 @@
 		<classes>
 			<parameter name="width" value="320" />
 			<parameter name="height" value="568" />
-			<class name="com.aol.assist.testcase.AssistGetStarted" />
+			<class name="com.aol.assist.testcase.TestAssistGetStarted" />
 		</classes>
 	</test> -->
 
@@ -42,7 +42,7 @@
 		<classes>	
 			<parameter name="width" value="375" />
 			<parameter name="height" value="667" />
-			<class name="com.aol.assist.testcase.AssistGetStarted" />
+			<class name="com.aol.assist.testcase.TestAssistGetStarted" />
 		</classes>
 	</test> -->
 
@@ -51,7 +51,7 @@
 		<classes>				
 			<parameter name="width" value="414" />
 			<parameter name="height" value="736" />
-			<class name="com.aol.assist.testcase.AssistGetStarted" />
+			<class name="com.aol.assist.testcase.TestAssistGetStarted" />
 		</classes>
 	</test> -->
 
@@ -60,74 +60,8 @@
 		<classes>				
 			<parameter name="width" value="768" />
 			<parameter name="height" value="1024" />
-			<class name="com.aol.assist.testcase.AssistGetStarted" />
+			<class name="com.aol.assist.testcase.TestAssistGetStarted" />
 		</classes>
 	</test> -->
 
- 	<!-- 99% of all desktop browsers are at least this big -->
-   <!-- <test name="Test_MostDesktopBrowsersMininumSize">
-		<classes>				
-			<parameter name="width" value="1024" />
-			<parameter name="height" value="768" />
-			<parameter name="username" value="ritsmvp6a69a1" />
-			<parameter name="password" value="qwe123" />
-			<class name="com.aol.assist.testcase.TestDownloadProduct">
-				<methods>
-					<include name="downloadTest" />
-				</methods>
-			</class>
-		</classes>
-	</test> -->
-	
-	<!-- 99% of all Mobile browsers are at least this big -->
-	<!-- <test name="Test_MobileVersionIos">
-		<classes>				
-			<parameter name="width" value="1024" />
-			<parameter name="height" value="768" />
-			<parameter name="mobile" value="true" />
-			<parameter name="username" value="ritsmvp6a69a1" />
-			<parameter name="password" value="qwe123" />
-			<parameter name="mobileVersion" value="true" />		
-			<parameter name="deviceType" value="ios" />
-			<class name="com.aol.assist.testcase.TestDownloadProduct">
-				<methods>
-					<include name="downloadTest" />
-				</methods>
-			</class>
-		</classes>
-	</test>
-	
-	   	<test name="Test_MobileVersionAndroid">
-		<classes>				
-			<parameter name="width" value="1024" />
-			<parameter name="height" value="768" />
-			<parameter name="mobile" value="true" />
-			<parameter name="username" value="ritsmvp6a69a1" />
-			<parameter name="password" value="qwe123" />
-			<parameter name="mobileVersion" value="true" />
-			<parameter name="deviceType" value="android" />		
-			<class name="com.aol.assist.testcase.TestDownloadProduct">
-				<methods>
-					<include name="downloadTest" />
-				</methods>
-			</class>
-		</classes>
-	</test>
-	
-  	<test name="Test_MaxDowloadError">
-		<classes>				
-			<parameter name="width" value="1024" />
-			<parameter name="height" value="768" />
-			<parameter name="username" value="ritsmvp6a69a1" />
-			<parameter name="password" value="qwe123" />
-			<parameter name="expectedErrorText" value="You or another individual on your AOL account has already activated all the Private WiFi subscriptions available with your AOL Advantage plan." />
-			<class name="com.aol.assist.testcase.TestDownloadProduct">
-				<methods>
-					<include name="maxDownloadErrorTest" />
-				</methods>
-			</class>
-		</classes>
-	</test>	-->
-
-	 
 </suite>
