@@ -224,7 +224,7 @@ public abstract class UITestBase {
 	
 	private boolean shouldDisableEyes() {
 		LOG.debug("Checking if Eyes() should be disabled...");
-		return StringUtils.isNotBlank(System.getProperty("DISABLE_EYES"))?BooleanUtils.toBoolean(System.getProperty("DISABLE_EYES")):BooleanUtils.toBoolean(mainProps.getProperty("DISABLE_EYES"));
+		return StringUtils.isNotBlank(System.getProperty("disableEyes"))?BooleanUtils.toBoolean(System.getProperty("disableEyes")):BooleanUtils.toBoolean(mainProps.getProperty("DISABLE_EYES"));
 	}
 
 
