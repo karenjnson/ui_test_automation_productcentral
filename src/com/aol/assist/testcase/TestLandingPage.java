@@ -13,7 +13,7 @@ public class TestLandingPage extends UITestBase {
 	@Parameters({ "accountType", "username", "password", "asqQuestion", "asqAnswer", "countryCode" })
 	@Test
 	public void testLandingPage(String accountType, String username, String password, @Optional("Question") String asqQuestion,
-			@Optional("1234") String asqAnswer, @Optional("us") String countryCode) {
+			@Optional("1234") String asqAnswer, @Optional("us") String countryCode) throws Exception {
 		
 		createAccount(accountType, username, password, asqQuestion, asqAnswer, countryCode);
 		landingPage.openLandingPage(envProps);

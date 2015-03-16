@@ -1,7 +1,5 @@
 package com.aol.assist.ui.page;
 
-import java.util.Properties;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.openqa.selenium.By;
@@ -9,12 +7,13 @@ import org.openqa.selenium.By;
 import com.aol.automation.webdriver.WebDriverWrapper;
 import com.aol.common.model.user.Account;
 
-public class AssistPlansPage extends FullPage implements LoginPage, DownloadPage, ErrorIneligiblePage{
+public class PlansPage extends FullPage implements LoginPage, DownloadPage, ErrorIneligiblePage{
 
-	public static final Log LOG = LogFactory.getLog(AssistPlansPage.class);
+	private static final Log LOG = LogFactory.getLog(PlansPage.class);
 
-	public AssistPlansPage(WebDriverWrapper driver) {
+	public PlansPage(WebDriverWrapper driver) throws Exception {
 		super(driver);
+		checkHeaderText(HEADER_TEXT_LOC, EXPECTED_HEADER_TEXT);
 	}
 
 
@@ -57,12 +56,12 @@ public class AssistPlansPage extends FullPage implements LoginPage, DownloadPage
 		return this;
 	}
 
-	public AssistPlansPage chooseOneTimeFix() {
+	public PlansPage chooseOneTimeFix() {
 		driver.findElement(ONE_TIME_FIX).click();
 		return this;
 	}
 
-	public InfoPage readFAQ() {
+	public InfoPage readFAQ() throws Exception {
 		driver.findElement(FAQ_LOC).click();
 		return new FaqPage(driver);
 		
@@ -70,5 +69,7 @@ public class AssistPlansPage extends FullPage implements LoginPage, DownloadPage
 	
 	private static final By FAQ_LOC = By.linkText("FAQs");
 	private static final By ONE_TIME_FIX = By.linkText("One-Time Fix");
-
+    private static final By HEADER_TEXT_LOC = By.cssSelector("h1.text-light");
+    
+    private static final String EXPECTED_HEADER_TEXT = "Pick the plan that's right for you";
 }

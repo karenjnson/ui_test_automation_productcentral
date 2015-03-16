@@ -12,27 +12,32 @@ public abstract class InfoPageAbstract extends FullPage implements InfoPage {
 	
 	public InfoPageAbstract(WebDriverWrapper driver) {
 		super(driver);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
-	public InfoPage selectWhyChoose() {
+	public InfoPage selectWhyChooseUs() throws Exception {
 		LOG.debug("Switching to 'Why Choose Us' page...");
-		driver.findElement(By.id("whyus")).click();
+		driver.findElement(WHY_US_TAB).click();
 		return new WhyUsPage(driver);
 	}
 
 	@Override
-	public InfoPage selectFaqs() {
+	public InfoPage selectFAQs() throws Exception {
 		LOG.debug("Switching to 'FAQs' page...");
-		driver.findElement(By.id("faqs")).click();
+		driver.findElement(FAQ_TAB).click();
 		return new FaqPage(driver);
 	}
+	
 	@Override
-	public InfoPage selectTos() {
+	public InfoPage selectTOS() throws Exception {
 		LOG.debug("Switching to 'Terms of Service' page...");
-		driver.findElement(By.id("tos")).click();
+		driver.findElement(TERMS_OF_SERVICE_TAB).click();
 		return new TosPage(driver);
 	}
+
+	private static final By FAQ_TAB = By.id("faqs");
+	protected static final By HEADER_TEXT_LOC = By.xpath("//*[@id='hero-content']/div[1]/h1");
+	private static final By TERMS_OF_SERVICE_TAB = By.id("tos");
+	private static final By WHY_US_TAB = By.id("whyus");
  
 }

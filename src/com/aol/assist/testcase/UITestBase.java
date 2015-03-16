@@ -61,36 +61,18 @@ public abstract class UITestBase {
 		envName = env.toLowerCase();
 
 		getConfigProperties();
-
+		disableEyes = shouldDisableEyes();
+				
 		/* NOTE: gridProviders is set to DEFAULT_GRID_PROVIDERS if user doesn't specify */
 		driverFactory = new WebDriverFactory(getGridProviders(gridProviders));
 	}
 
 
-	private Eyes getEyes() {
-		
-		if(eyes == null){
-			eyes = new Eyes();
-	        eyes.setApiKey(getApplitoolsApiKey());
-	        eyes.setMatchLevel(MatchLevel.LAYOUT);
-		}
-		
-		return eyes;
-	}
-
-
 	@BeforeMethod(alwaysRun=true)
-//	@Parameters({"os", "browserType", "browserVersion", "platform"})
-//	public void beforeMethod(ITestContext testContext, Method method, String os,
-//			String browserType, @Optional("")String browserVersion, @Optional("") String platform)
-//	{
 	@Parameters({"os", "browserType", "width", "height", "productName", "browserVersion"})
 	public void beforeMethod(ITestContext testContext, Method method, String os,
 			String browserType, String width, String height, String productName, @Optional("")String browserVersion)
 	{
-		
-		disableEyes = shouldDisableEyes();
-		
 		LOG.debug("width: " + width);
 		LOG.debug("Height: " + height);
 
@@ -229,7 +211,19 @@ public abstract class UITestBase {
 		return StringUtils.isNotBlank(System.getProperty("APPLITOOLS_API_KEY"))?System.getProperty("APPLITOOLS_API_KEY"):mainProps.getProperty("APPLITOOLS_API_KEY");
 	}
 	
-	private boolean shouldDisableEyes() {		
+	private Eyes getEyes() {
+		
+		if(eyes == null) {
+			eyes = new Eyes();
+	        eyes.setApiKey(getApplitoolsApiKey());
+	        eyes.setMatchLevel(MatchLevel.LAYOUT);
+	        eyes.setForceFullPageScreenshot(true);
+		}	
+		return eyes;
+	}
+	
+	private boolean shouldDisableEyes() {
+		LOG.debug("Checking if Eyes() should be disabled...");
 		return StringUtils.isNotBlank(System.getProperty("DISABLE_EYES"))?BooleanUtils.toBoolean(System.getProperty("DISABLE_EYES")):BooleanUtils.toBoolean(mainProps.getProperty("DISABLE_EYES"));
 	}
 

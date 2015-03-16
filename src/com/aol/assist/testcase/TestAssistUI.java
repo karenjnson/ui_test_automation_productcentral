@@ -6,35 +6,43 @@ import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-import com.aol.assist.ui.page.AssistPlansPage;
+import com.aol.assist.ui.page.PlansPage;
 import com.aol.assist.ui.page.InfoPage;
 
 public class TestAssistUI extends UITestBase {
 
 	private static final Log LOG = LogFactory.getLog(TestAssistUI.class);
 
-	@Parameters({ "accountType", "username", "password", "asqQuestion", "asqAnswer", "countryCode" })
+	@Parameters({ "accountType", "username", "password", "asqQuestion",
+			"asqAnswer", "countryCode" })
 	@Test
-	public void testAssistUI(String accountType, String username, String password, @Optional("Question") String asqQuestion,
-			@Optional("1234") String asqAnswer, @Optional("us") String countryCode) {
+	public void testAssistUI(String accountType, String username,
+			String password, @Optional("Question") String asqQuestion,
+			@Optional("1234") String asqAnswer,
+			@Optional("us") String countryCode) throws Exception {
+
+		createAccount(accountType, username, password, asqQuestion, asqAnswer,
+				countryCode);
 		
-		createAccount(accountType, username, password, asqQuestion, asqAnswer, countryCode);
 		landingPage.openLandingPage(envProps);
 		checkWindow("Landing Page");
 
-		AssistPlansPage plansPage = landingPage.getStarted();
-		
-		checkWindow("Plans Default");
-		
+		PlansPage plansPage = landingPage.getStarted();
+		checkWindow("Initial Plans Page");
+
 		plansPage.chooseOneTimeFix();
-		checkWindow("OneTimeFix");
-		InfoPage infopage=plansPage.readFAQ();
+		checkWindow("One Time Fix Tab Selected");
+
+		InfoPage infoPage = plansPage.readFAQ();
+		checkWindow("FAQ via footer link");
+
+		infoPage.selectWhyChooseUs();
+		checkWindow("Why Us");
+
+		infoPage.selectTOS();
+		checkWindow("Terms Of Service");
+		
+		infoPage.selectFAQs();
 		checkWindow("FAQ");
-		
-		infopage.selectWhyChoose();
-		checkWindow("WhyUs");
-		
-		infopage.selectTos();
-		checkWindow("TOS");
 	}
 }

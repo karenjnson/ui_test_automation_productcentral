@@ -20,7 +20,7 @@ public class TestRegistrationProduct extends UITestBase {
 	@Test
 	public void testValidUser(String accountType, String username, String password,
 			@Optional("Question") String asqQuestion, @Optional("1234") String asqAnswer,
-			@Optional("us") String countryCode)
+			@Optional("us") String countryCode) throws Exception
 	{
 		createAccount(accountType, username, password, asqQuestion, asqAnswer, countryCode);
 		landingPage.openLandingPage(envProps);
@@ -29,7 +29,7 @@ public class TestRegistrationProduct extends UITestBase {
 
 		try {
 			loginPage.login(account);
-			checkWindow();
+			checkWindow("Landing Page after login");
 			Thread.sleep(1000);
 		} catch (Exception e) {
 			//TODO: handle screenshots with a listener
@@ -43,7 +43,7 @@ public class TestRegistrationProduct extends UITestBase {
 	@Test
 	public void testIneligibleUser(String accountType, String username, String password,
 			@Optional("Question") String asqQuestion, @Optional("1234") String asqAnswer,
-			@Optional("us") String countryCode) {
+			@Optional("us") String countryCode) throws Exception {
 		
 		createAccount(accountType, username, password, asqQuestion, asqAnswer, countryCode);
 		landingPage.openLandingPage(envProps);
@@ -65,7 +65,7 @@ public class TestRegistrationProduct extends UITestBase {
 	@Test
 	public void testInvalidUser(String accountType, String username, String password,
 			@Optional("Question") String asqQuestion, @Optional("1234") String asqAnswer,
-			@Optional("us") String countryCode) {
+			@Optional("us") String countryCode) throws Exception {
 
 		createAccount(accountType, username, password, asqQuestion, asqAnswer, countryCode);
 		landingPage.openLandingPage(envProps);
@@ -88,7 +88,7 @@ public class TestRegistrationProduct extends UITestBase {
 	@Test
 	public void testInvalidPassword(String accountType, String username, String password,
 			@Optional("Question") String asqQuestion, @Optional("1234") String asqAnswer,
-			@Optional("us") String countryCode) {
+			@Optional("us") String countryCode) throws Exception {
 
 		createAccount(accountType, username, password, asqQuestion, asqAnswer, countryCode);
 		landingPage.openLandingPage(envProps);

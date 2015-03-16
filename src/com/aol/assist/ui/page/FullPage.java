@@ -6,6 +6,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
+import org.openqa.selenium.WebElement;
 
 import com.aol.automation.webdriver.WebDriverWrapper;
 import com.aol.common.model.user.Account;
@@ -28,6 +29,20 @@ public abstract class FullPage {
 		this.driver = driver;
 	}
 
+	public boolean checkHeaderText(By headerTextLoc, String expectedHeaderTextPartial) throws Exception {
+		WebElement headerTextObj = driver.waitForElementToBeVisible(headerTextLoc);
+		String headerText = headerTextObj.getText();
+		LOG.debug("Header text found: '" + headerText + "'");
+		
+		if (!headerText.contains(expectedHeaderTextPartial)) {
+			String errMsg = "This may not be the page we expected. "
+					+ "Found header text: '" + headerText + "'"
+					+ ", but expected: '" + expectedHeaderTextPartial + "'";
+			LOG.error(errMsg);
+			throw new Exception(errMsg);
+		}
+		return true;
+	}
 
 	/**
 	 * expects an account with valid asq answer

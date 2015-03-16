@@ -47,19 +47,21 @@ public class AssistLandingPage extends FullPage implements LandingPage, LoginPag
 
 
 	@Override
-	public void openLandingPage(Properties envProps) {
+	public void openLandingPage(Properties envProps) throws Exception {
 
 		String url = envProps.getProperty("ASSIST.LANDINGPAGE.URL");
 		
 	    LOG.debug("Getting page: " + url);
 		driver.get(url);
+		
+		checkHeaderText(HEADER_TEXT_LOC, EXPECTED_HEADER_TEXT);
 	}
 
 
 	@Override
-	public AssistPlansPage getStarted() {
+	public PlansPage getStarted() throws Exception {
 		driver.findElement(CALL_TO_ACTION_LOC).click();
-		return new AssistPlansPage(driver);		
+		return new PlansPage(driver);		
 	}
 
 	@Override
@@ -80,5 +82,8 @@ public class AssistLandingPage extends FullPage implements LandingPage, LoginPag
 
 	
 	private static final By CALL_TO_ACTION_LOC = By.id("hero-content-cta");
-
+	private static final By HEADER_TEXT_LOC = By.id("hero-content-title");
+	
+	private static final String EXPECTED_HEADER_TEXT = "We make technology simple.";
+	
 }

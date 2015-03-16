@@ -6,7 +6,7 @@ import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-import com.aol.assist.ui.page.AssistPlansPage;
+import com.aol.assist.ui.page.PlansPage;
 
 public class TestAssistGetStarted extends UITestBase {
 
@@ -15,13 +15,13 @@ public class TestAssistGetStarted extends UITestBase {
 	@Parameters({ "accountType", "username", "password", "asqQuestion", "asqAnswer", "countryCode" })
 	@Test
 	public void testLandingPage(String accountType, String username, String password, @Optional("Question") String asqQuestion,
-			@Optional("1234") String asqAnswer, @Optional("us") String countryCode) {
+			@Optional("1234") String asqAnswer, @Optional("us") String countryCode) throws Exception {
 		
 		createAccount(accountType, username, password, asqQuestion, asqAnswer, countryCode);
 		landingPage.openLandingPage(envProps);
 		checkWindow("Landing Page");
 		
-		AssistPlansPage plansPage = landingPage.getStarted();
+		PlansPage plansPage = landingPage.getStarted();
 		checkWindow("Plans Page");
 
 		plansPage.chooseOneTimeFix();
