@@ -3,9 +3,9 @@
 <suite name="Suite" parallel="false">
 
 	<parameter name="env" value="prod" />
-	<parameter name="gridProviders" value="localhost" />
+	<parameter name="gridProviders" value="sauceLabs" />
 
-	<parameter name="os" value="mac" />
+	<parameter name="os" value="xp" />
 	<parameter name="browserType" value="firefox" />
     
 	<!-- OPTIONAL PARAMETERS -->
