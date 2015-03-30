@@ -62,7 +62,7 @@ public abstract class UITestBase {
 
 		getConfigProperties();
 		disableEyes = shouldDisableEyes();
-				
+
 		/* NOTE: gridProviders is set to DEFAULT_GRID_PROVIDERS if user doesn't specify */
 		driverFactory = new WebDriverFactory(getGridProviders(gridProviders));
 	}
@@ -82,20 +82,20 @@ public abstract class UITestBase {
 		String build = testName;
 
 		LOG.debug("Getting webdriver instance...");
-		
+
 		driver = getDriverFactory(testContext).getRemoteWebDriver(build, testName, os, browserType, browserVersion);
 
 		driver.openEyes(getEyes(), testName, productName+" "+testName, getRectangle(width, height));
 
 		saveSessionId(testContext);
-		
+
 		landingPage = LandingPageFactory.getLandingPage(driver, productName);
-		this.productName = productName; 
+		this.productName = productName;
 		errorScreenShotSuffix = os + "_" + browserType
 				+ "_"+ browserVersion
 				+ "_" + "USR" + "."
 				+ mainProps.getProperty("SCREENSHOT_IMG_FORMAT");
-		
+
 		if(StringUtils.isNotBlank(testContext.getCurrentXmlTest().getParameter("mobileVersion"))){
 			mobileVersion  = Boolean.valueOf(testContext.getCurrentXmlTest().getParameter("mobileVersion"));
 			deviceType = testContext.getCurrentXmlTest().getParameter("deviceType");
@@ -195,33 +195,33 @@ public abstract class UITestBase {
 			e.printStackTrace();
 		}
 	}
-	
+
 	protected void createAccount(String accountType, String username, String password, String asqQuestion, String asqAnswer, String countryCode) {
 		ASQ accountSecurityQAndA = new ASQ(asqQuestion, asqAnswer);
 		account = new Account(accountType, username, password, accountSecurityQAndA, countryCode);
 	}
-	
+
 	protected void checkWindow(String suffix) {
 		if (!disableEyes) {
 			eyes.checkWindow(productName+" "+suffix);
 		}
 	}
-	
+
 	private String getApplitoolsApiKey() {
-		return StringUtils.isNotBlank(System.getProperty("APPLITOOLS_API_KEY"))?System.getProperty("APPLITOOLS_API_KEY"):mainProps.getProperty("APPLITOOLS_API_KEY");
+		return StringUtils.isNotBlank(System.getProperty("applitoolsApiKey"))?System.getProperty("applitoolsApiKey"):mainProps.getProperty("APPLITOOLS_API_KEY");
 	}
-	
+
 	private Eyes getEyes() {
-		
+
 		if(eyes == null) {
 			eyes = new Eyes();
 	        eyes.setApiKey(getApplitoolsApiKey());
 	        eyes.setMatchLevel(MatchLevel.LAYOUT);
 	        eyes.setForceFullPageScreenshot(true);
-		}	
+		}
 		return eyes;
 	}
-	
+
 	private boolean shouldDisableEyes() {
 		LOG.debug("Checking if Eyes() should be disabled...");
 		return StringUtils.isNotBlank(System.getProperty("disableEyes"))?BooleanUtils.toBoolean(System.getProperty("disableEyes")):BooleanUtils.toBoolean(mainProps.getProperty("DISABLE_EYES"));
@@ -232,11 +232,11 @@ public abstract class UITestBase {
 		if(driverFactory == null){
 			driverFactory = new WebDriverFactory(getGridProviders(testContext.getCurrentXmlTest().getParameter("gridProviders")));
 		}
-		
+
 		return driverFactory;
 	}
 
-	
+
 	private static final String CONFIG_DIR = "resources/config";
 	private static final String DEFAULT_GRID_PROVIDERS = "griddick";
 	private static final String MAIN_PROPERTIES_FILE = CONFIG_DIR + "/main.properties";
