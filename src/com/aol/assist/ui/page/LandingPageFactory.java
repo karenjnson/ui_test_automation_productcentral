@@ -25,6 +25,6 @@ public class LandingPageFactory {
 	}
 
 	private static void defaultErr(String productName) {
-		LOG.error("Unable to set landing page for product: " + productName);
+		LOG.error("Unable to set landing page for product: '" + productName + "'");
 	}
 }

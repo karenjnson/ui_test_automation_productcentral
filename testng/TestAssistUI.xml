@@ -2,7 +2,7 @@
 
 <suite name="Suite" parallel="false">
 
-	<parameter name="env" value="prod" />
+	<parameter name="env" value="stage" />
 	<parameter name="gridProviders" value="sauceLabs" />
 
 	<parameter name="os" value="xp" />
