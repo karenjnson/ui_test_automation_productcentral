@@ -16,14 +16,14 @@ import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 
-import com.aol.automation.webdriver.WebDriverFactory;
-import com.aol.automation.webdriver.WebDriverWrapper;
 import com.aol.common.model.user.ASQ;
 import com.aol.common.model.user.Account;
 import com.aol.common.util.io.IOUtils;
 import com.aol.common.util.screen.ScreenUtil;
 import com.aol.assist.ui.page.LandingPage;
 import com.aol.assist.ui.page.LandingPageFactory;
+import com.aol.automation.webdriver.WebDriverFactory;
+import com.aol.automation.webdriver.WebDriverWrapper;
 import com.applitools.eyes.Eyes;
 import com.applitools.eyes.MatchLevel;
 import com.applitools.eyes.RectangleSize;
@@ -47,7 +47,7 @@ public abstract class UITestBase {
 	protected LandingPage landingPage;
 	protected boolean mobileVersion = false;
 	protected String deviceType = null;
-	private boolean disableEyes = false;
+	private boolean isEyesDisabled = false;
 
 
 	@BeforeSuite(alwaysRun=true)
@@ -61,7 +61,8 @@ public abstract class UITestBase {
 		envName = env.toLowerCase();
 
 		getConfigProperties();
-		disableEyes = shouldDisableEyes();
+		isEyesDisabled = shouldDisableEyes();
+		LOG.debug("Is Eyes() disabled: " + isEyesDisabled);
 
 		/* NOTE: gridProviders is set to DEFAULT_GRID_PROVIDERS if user doesn't specify */
 		driverFactory = new WebDriverFactory(getGridProviders(gridProviders));
@@ -176,12 +177,12 @@ public abstract class UITestBase {
 	 * One provider may not have our requested platform available and we should
 	 * be able to shift to another provider dynamically
 	 */
-	private String getGridProviders(String userSpecifiedGridProviders) {
+	private String getGridProviders(String testNgXMLSpecifiedGridProviders) {
 		/* allows us to override which provider(s) to use at runtime. ie: via Jenkins config */
-		String mavenParamName = "runlocal";
+		String runTimeArg = "gridProviders";
 
-		LOG.debug("Checking for maven supplied parameter '"+ mavenParamName +"'");
-		String gridProviders = System.getProperty(mavenParamName, userSpecifiedGridProviders);
+		LOG.debug("Checking for runtime arg '"+ runTimeArg +"'");
+		String gridProviders = System.getProperty(runTimeArg, testNgXMLSpecifiedGridProviders);
 		LOG.debug("Setting 'gridProviders': " + gridProviders);
 		return gridProviders;
 	}
@@ -202,13 +203,29 @@ public abstract class UITestBase {
 	}
 
 	protected void checkWindow(String suffix) {
-		if (!disableEyes) {
+		if (!isEyesDisabled) {
 			eyes.checkWindow(productName+" "+suffix);
 		}
 	}
 
 	private String getApplitoolsApiKey() {
-		return StringUtils.isNotBlank(System.getProperty("applitoolsApiKey"))?System.getProperty("applitoolsApiKey"):mainProps.getProperty("APPLITOOLS_API_KEY");
+//		return StringUtils.isNotBlank(System.getProperty("applitoolsApiKey"))?System.getProperty("applitoolsApiKey"):mainProps.getProperty("APPLITOOLS_API_KEY");
+		return getPropertyFromSystemOrFile("applitoolsApiKey", "APPLITOOLS_API_KEY");
+	}
+
+	private String getPropertyFromSystemOrFile(String runTimeArg, String configPropName) {
+		String value;
+
+		LOG.debug("Checking for runTime supplied parameter '"+ runTimeArg +"'");
+		if (StringUtils.isNotBlank(System.getProperty(runTimeArg))) {
+			value = System.getProperty(runTimeArg);
+			LOG.debug("Found runTime arg '"+ runTimeArg +"': " + value);
+			return value;
+		}
+
+		value = mainProps.getProperty(configPropName);
+		LOG.debug("Using '"+ configPropName +"' property from main config file: " + value);
+		return value;
 	}
 
 	private Eyes getEyes() {
@@ -224,7 +241,8 @@ public abstract class UITestBase {
 
 	private boolean shouldDisableEyes() {
 		LOG.debug("Checking if Eyes() should be disabled...");
-		return StringUtils.isNotBlank(System.getProperty("disableEyes"))?BooleanUtils.toBoolean(System.getProperty("disableEyes")):BooleanUtils.toBoolean(mainProps.getProperty("DISABLE_EYES"));
+//		return StringUtils.isNotBlank(System.getProperty("disableEyes"))?BooleanUtils.toBoolean(System.getProperty("disableEyes")):BooleanUtils.toBoolean(mainProps.getProperty("DISABLE_EYES"));
+		return BooleanUtils.toBoolean(getPropertyFromSystemOrFile("disableEyes", "DIABLE_EYES"));
 	}
 
 
