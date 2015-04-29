@@ -21,8 +21,8 @@ public class TestAssistUI extends UITestBase {
 			@Optional("1234") String asqAnswer,
 			@Optional("us") String countryCode) throws Exception {
 
-		createAccount(accountType, username, password, asqQuestion, asqAnswer,
-				countryCode);
+//		createAccount(accountType, username, password, asqQuestion, asqAnswer,
+//				countryCode);
 		
 		landingPage.openLandingPage(envProps);
 		checkWindow("Landing Page");

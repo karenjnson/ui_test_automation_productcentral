@@ -5,9 +5,11 @@ import java.util.Properties;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.aol.automation.webdriver.WebDriverWrapper;
-import com.aol.common.model.user.Account;
+import com.aol.common.model.account.*;
 
 public class AssistLandingPage extends FullPage implements LandingPage, LoginPage, DownloadPage, ErrorIneligiblePage{
 
@@ -60,6 +62,8 @@ public class AssistLandingPage extends FullPage implements LandingPage, LoginPag
 
 	@Override
 	public PlansPage getStarted() throws Exception {
+		WebDriverWait wait = new WebDriverWait(driver, 5);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(CALL_TO_ACTION_LOC));
 		driver.findElement(CALL_TO_ACTION_LOC).click();
 		return new PlansPage(driver);		
 	}
@@ -85,5 +89,6 @@ public class AssistLandingPage extends FullPage implements LandingPage, LoginPag
 	private static final By HEADER_TEXT_LOC = By.id("hero-content-title");
 	
 	private static final String EXPECTED_HEADER_TEXT = "We make technology simple.";
+	private static final By DEVICES_WE_SUPPORT_LINK = By.id("banner-links-devices-we-support");
 	
 }

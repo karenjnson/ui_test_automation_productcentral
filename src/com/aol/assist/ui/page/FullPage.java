@@ -9,11 +9,11 @@ import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 
 import com.aol.automation.webdriver.WebDriverWrapper;
-import com.aol.common.model.user.Account;
+import com.aol.common.model.account.*;
 import com.aol.common.ui.login.UILogin;
 
 
-public abstract class FullPage {
+public abstract class FullPage{
 
 	private static final Log LOG = LogFactory.getLog(FullPage.class);
 
@@ -155,6 +155,24 @@ public abstract class FullPage {
 	public void clickMobileVersion(){
 		driver.findElement(By.linkText("Mobile Version")).click();
 	}
+	
+	public DevicesWeSupportPage clickDevicesWeSupportPage() throws Exception
+	{
+		driver.findElement(DEVICES_LINK).click();
+		return new DevicesWeSupportPage(driver);
+	}
+	
+	public CommonIssuesPage clickCommonIssuesPage() throws Exception
+	{
+		driver.findElement(COMMON_ISSUES_LINK).click();
+		return new CommonIssuesPage(driver);
+	}
+	
+	public WhyChooseUsPage clickWhyChooseUsPage() throws Exception
+	{
+		driver.findElement(WHY_CHOOSE_US_LINK).click();
+		return new WhyChooseUsPage(driver);
+	}
 
 	private static final By MY_ACCT_LOC = By.xpath("//*[@id='myAccount']/a");
 	private static final By SECURITY_ANSWER_LOC = By.id("asqanswer");
@@ -164,4 +182,7 @@ public abstract class FullPage {
 	private static final By USERNAME_INPUT = By.id("lgnId1");
 	private static final By PASSWORD_INPUT = By.id("pwdId1");
 	private static final By SIGNIN_BUTTON = By.id("submitID");
+	private static final By DEVICES_LINK = By.id("banner-links-devices-we-support");
+	private static final By COMMON_ISSUES_LINK = By.id("banner-links-common-issues");
+	private static final By WHY_CHOOSE_US_LINK = By.id("banner-links-why-choose-us");
 }

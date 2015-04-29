@@ -14,7 +14,7 @@
 		</repository>
 		<repository>
 			<id>maven-aol-proxy-paid-svcs</id>
-			<url>http://cmmaven.cm.aol.com:8081/nexus/content/repositories/aol-paid-svcs</url>
+			<url>http://cmmaven.cm.aol.com:8081/nexus/content/repositories/aol-paid-svcs/</url>
 		</repository>
 		<repository>
 			<id>cmmaven2</id>
@@ -42,7 +42,7 @@
 		<dependency>
 			<groupId>com.aol.automation.ui</groupId>
 			<artifactId>ui-test-automation-base</artifactId>
-			<version>1.3</version>
+			<version>1.5</version>
 		</dependency>
 		<dependency>
 			<groupId>com.aol.supportportal</groupId>

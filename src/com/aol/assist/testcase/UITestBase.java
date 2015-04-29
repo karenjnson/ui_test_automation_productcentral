@@ -17,7 +17,7 @@ import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 
 import com.aol.common.model.user.ASQ;
-import com.aol.common.model.user.Account;
+//import com.aol.common.model.user.Account;
 import com.aol.common.util.io.IOUtils;
 import com.aol.common.util.screen.ScreenUtil;
 import com.aol.assist.ui.page.LandingPage;
@@ -41,7 +41,7 @@ public abstract class UITestBase {
 	private WebDriverFactory driverFactory;
 	protected WebDriverWrapper driver = null;
 
-	protected Account account = null;
+	//protected Account account = null;
 	protected Eyes eyes;
 	protected String productName;
 	protected LandingPage landingPage;
@@ -72,7 +72,7 @@ public abstract class UITestBase {
 	@BeforeMethod(alwaysRun=true)
 	@Parameters({"os", "browserType", "width", "height", "productName", "browserVersion"})
 	public void beforeMethod(ITestContext testContext, Method method, String os,
-			String browserType, String width, String height, String productName, @Optional("")String browserVersion)
+			String browserType, @Optional("") String width, @Optional("") String height, String productName, @Optional("")String browserVersion)
 	{
 		LOG.debug("width: " + width);
 		LOG.debug("Height: " + height);
@@ -81,16 +81,28 @@ public abstract class UITestBase {
 		String testName = method.getName();
 		/* used by BrowserStack */
 		String build = testName;
+		String resolution ="1920x1080";
 
 		LOG.debug("Getting webdriver instance...");
 
-		driver = getDriverFactory(testContext).getRemoteWebDriver(build, testName, os, browserType, browserVersion);
-
-		driver.openEyes(getEyes(), testName, productName+" "+testName, getRectangle(width, height));
+		//if(platform.equals("")&&device.equals(""))
+			driver = getDriverFactory(testContext).getRemoteWebDriver(build, testName, os, browserType, browserVersion);
+		//else
+			//driver = getDriverFactory(testContext).getRemoteWebDriver(build, testName, os, browserType, browserVersion,platform,device);
+		
+		//if(width.equals("") && height.equals(""))
+			//driver.openEyes(getEyes(), testName, productName+" "+testName+"_"+os+"_"+browserType+"_"+platform+"_"+device);
+		/*else
+		{*/
+			resolution =((width.equals(""))?"1920":width)+"x"+((height.equals(""))?"1080":height);
+			LOG.info("Default resolution should be considered : "+resolution);	
+			driver.openEyes(getEyes(), testName, productName+" "+testName+"_"+os+"_"+browserType+"_"+browserVersion+"_"+resolution, getRectangle(width, height));
+		//}
 
 		saveSessionId(testContext);
 
 		landingPage = LandingPageFactory.getLandingPage(driver, productName);
+		
 		this.productName = productName;
 		errorScreenShotSuffix = os + "_" + browserType
 				+ "_"+ browserVersion
@@ -197,13 +209,14 @@ public abstract class UITestBase {
 		}
 	}
 
-	protected void createAccount(String accountType, String username, String password, String asqQuestion, String asqAnswer, String countryCode) {
-		ASQ accountSecurityQAndA = new ASQ(asqQuestion, asqAnswer);
-		account = new Account(accountType, username, password, accountSecurityQAndA, countryCode);
-	}
+//	protected void createAccount(String accountType, String username, String password, String asqQuestion, String asqAnswer, String countryCode) {
+//		ASQ accountSecurityQAndA = new ASQ(asqQuestion, asqAnswer);
+//		account = new Account(accountType, username, password, accountSecurityQAndA, countryCode);
+//	}
 
 	protected void checkWindow(String suffix) {
 		if (!isEyesDisabled) {
+			eyes.setSaveFailedTests(true);
 			eyes.checkWindow(productName+" "+suffix);
 		}
 	}
@@ -250,7 +263,6 @@ public abstract class UITestBase {
 		if(driverFactory == null){
 			driverFactory = new WebDriverFactory(getGridProviders(testContext.getCurrentXmlTest().getParameter("gridProviders")));
 		}
-
 		return driverFactory;
 	}
 

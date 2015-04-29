@@ -5,7 +5,7 @@ import org.apache.commons.logging.LogFactory;
 import org.openqa.selenium.By;
 
 import com.aol.automation.webdriver.WebDriverWrapper;
-import com.aol.common.model.user.Account;
+import com.aol.common.model.account.Account;
 
 public class PlansPage extends FullPage implements LoginPage, DownloadPage, ErrorIneligiblePage{
 

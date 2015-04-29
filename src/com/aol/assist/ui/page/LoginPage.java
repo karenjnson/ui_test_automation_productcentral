@@ -1,6 +1,6 @@
 package com.aol.assist.ui.page;
 
-import com.aol.common.model.user.Account;
+import com.aol.common.model.account.*;
 
 public interface LoginPage {
 	public boolean login(Account account);

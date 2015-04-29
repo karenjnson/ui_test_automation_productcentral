@@ -15,7 +15,7 @@ public class TestLandingPage extends UITestBase {
 	public void testLandingPage(String accountType, String username, String password, @Optional("Question") String asqQuestion,
 			@Optional("1234") String asqAnswer, @Optional("us") String countryCode) throws Exception {
 		
-		createAccount(accountType, username, password, asqQuestion, asqAnswer, countryCode);
+		//createAccount(accountType, username, password, asqQuestion, asqAnswer, countryCode);
 		landingPage.openLandingPage(envProps);
 		checkWindow("Landing Page");
 
