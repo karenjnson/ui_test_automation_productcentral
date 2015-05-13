@@ -22,6 +22,7 @@ public class TestAssistGetStarted extends UITestBase {
 		
 		//createAccount(accountType, username, password, asqQuestion, asqAnswer, countryCode);
 		landingPage.openLandingPage(envProps);
+		scrollToBottom(driver);
 		checkWindow("Landing Page");
 		
 		PlansPage plansPage = landingPage.getStarted();

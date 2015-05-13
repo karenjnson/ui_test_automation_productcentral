@@ -168,10 +168,10 @@ public abstract class FullPage{
 		return new CommonIssuesPage(driver);
 	}
 	
-	public WhyChooseUsPage clickWhyChooseUsPage() throws Exception
+	public WhyUsPage clickWhyChooseUsPage() throws Exception
 	{
 		driver.findElement(WHY_CHOOSE_US_LINK).click();
-		return new WhyChooseUsPage(driver);
+		return new WhyUsPage(driver);
 	}
 
 	private static final By MY_ACCT_LOC = By.xpath("//*[@id='myAccount']/a");

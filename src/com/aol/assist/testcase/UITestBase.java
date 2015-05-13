@@ -8,6 +8,7 @@ import org.apache.commons.lang3.BooleanUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.remote.SessionId;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterMethod;
@@ -81,12 +82,16 @@ public abstract class UITestBase {
 		String testName = method.getName();
 		/* used by BrowserStack */
 		String build = testName;
-		String resolution ="1920x1080";
+		width = ((width.equals(""))?"1920":width);
+		height = ((height.equals(""))?"1080":height);
 
 		LOG.debug("Getting webdriver instance...");
 
 		//if(platform.equals("")&&device.equals(""))
 			driver = getDriverFactory(testContext).getRemoteWebDriver(build, testName, os, browserType, browserVersion);
+			
+			if(driver==null)
+				LOG.info("Driver is null !!");
 		//else
 			//driver = getDriverFactory(testContext).getRemoteWebDriver(build, testName, os, browserType, browserVersion,platform,device);
 		
@@ -94,7 +99,7 @@ public abstract class UITestBase {
 			//driver.openEyes(getEyes(), testName, productName+" "+testName+"_"+os+"_"+browserType+"_"+platform+"_"+device);
 		/*else
 		{*/
-			resolution =((width.equals(""))?"1920":width)+"x"+((height.equals(""))?"1080":height);
+			String resolution =width+"x"+height;
 			LOG.info("Default resolution should be considered : "+resolution);	
 			driver.openEyes(getEyes(), testName, productName+" "+testName+"_"+os+"_"+browserType+"_"+browserVersion+"_"+resolution, getRectangle(width, height));
 		//}
@@ -246,7 +251,7 @@ public abstract class UITestBase {
 		if(eyes == null) {
 			eyes = new Eyes();
 	        eyes.setApiKey(getApplitoolsApiKey());
-	        eyes.setMatchLevel(MatchLevel.LAYOUT);
+	        eyes.setMatchLevel(MatchLevel.CONTENT);
 	        eyes.setForceFullPageScreenshot(true);
 		}
 		return eyes;
@@ -265,6 +270,11 @@ public abstract class UITestBase {
 		}
 		return driverFactory;
 	}
+	
+	protected static void scrollToBottom(WebDriverWrapper driver) {
+        LOG.info("Scrolling to bottom !");
+		((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
+    }
 
 
 	private static final String CONFIG_DIR = "resources/config";
