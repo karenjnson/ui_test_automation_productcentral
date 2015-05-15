@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<suite name="Suite" parallel="false">
+
+	<parameter name="env" value="prod" />
+	<parameter name="gridProviders" value="browserstack" />
+
+	<!-- parameter name="os" value="VISTA" />
+	<parameter name="browserType" value="chrome" / -->
+    
+	<!-- OPTIONAL PARAMETERS -->
+	<!-- 
+	<parameter name="browserVersion" value="11" /> 
+	<parameter name="platform" value="WINDOWS_CHROME" /> 
+	-->
+	
+	<parameter name="productName" value="Assist by AOL" />
+	<parameter name="accountType" value="sns" />
+	<parameter name="username" value="ritsmvp6a69a1" />
+	<parameter name="usernameMax" value="ritsmvp6a69a2" />
+	<parameter name="password" value="qwe123" />
+	
+	<!--
+	<test name="Test_AssistGetStartedpage_Windows_Chrome_1920_1080">
+		<classes>
+		    <parameter name="os" value="Windows" />
+			<parameter name="browserType" value="chrome" />
+			<parameter name="width" value="1920" />
+			<parameter name="height" value="1080" />
+			<parameter name="browserVersion" value="39.0" />
+			<class name="com.aol.assist.testcase.TestAssistGetStarted" />
+		</classes>
+	</test>  -->
+		<test name="Test_AssistGetStartedpage_Windows_Firefox_2048_1536">
+		<classes>
+		    <parameter name="os" value="Windows" />
+			<parameter name="browserType" value="firefox" />
+			<parameter name="width" value="2048" />
+			<parameter name="height" value="1536" />
+			<parameter name="browserVersion" value="" />
+			<class name="com.aol.assist.testcase.TestAssistGetStarted" />
+		</classes>
+	</test>
+
+	<!--
+	<test name="Test_AssistGetStartedpage_Windows_IE_10_1920_1080">
+		<classes>
+		    <parameter name="os" value="Windows" />
+			<parameter name="browserType" value="IE" />
+			<parameter name="width" value="1920" />
+			<parameter name="height" value="1080" />
+			<parameter name="browserVersion" value="10.0" />
+			<class name="com.aol.assist.testcase.TestAssistGetStarted" />
+		</classes>
+	</test>
+	
+	<test name="Test_AssistGetStartedpage_Windows_IE_1024_768">
+		<classes>
+		    <parameter name="os" value="Windows" />
+			<parameter name="browserType" value="IE" />
+			<parameter name="width" value="1024" />
+			<parameter name="height" value="768" />
+			<parameter name="browserVersion" value="10.0" />
+			<class name="com.aol.assist.testcase.TestAssistGetStarted" />
+		</classes>
+	</test>
+	-->
+
+</suite>
