@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<suite name="TestAllProductCentral"> 
+	<suite-files>  	
+		<suite-file path="testng/SafeCentral.xml"></suite-file>
+  		<suite-file path="testng/TechFortress.xml"></suite-file>
+  		<suite-file path="testng/Datamask.xml"></suite-file>
+  		<suite-file path="testng/LifeLock.xml"></suite-file>
+  		<suite-file path="testng/PrivateWifi.xml"></suite-file>
+  		<suite-file path="testng/SystemMechanicPCBooster.xml"></suite-file>
+  	</suite-files>
+
+</suite>

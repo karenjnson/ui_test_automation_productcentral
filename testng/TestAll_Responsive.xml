@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<suite name="TestAllProductCentral"> 
+	<suite-files>  	
+  		<suite-file path="testng/Affliates.xml"></suite-file>
+  		<suite-file path="testng/ComputerCheckupMonthly.xml"></suite-file>
+  		<suite-file path="testng/SystemMechanicPCBooster.xml"></suite-file>
+  		<suite-file path="testng/PrivateWifi.xml"></suite-file>
+  		<suite-file path="testng/SafeCentral.xml"></suite-file>
+  		<suite-file path="testng/IDVault.xml"></suite-file>
+  		<suite-file path="testng/Norton360ComputerSecurity.xml"></suite-file>
+  		<suite-file path="testng/PrivacyProtection.xml"></suite-file>
+  		<suite-file path="testng/Super-anti-spyware-protection.xml"></suite-file>
+  	</suite-files>
+
+</suite>

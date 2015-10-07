@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<suite name="TestAllProductCentral"> 
+	<suite-files>  	
+  		<suite-file path="testng/TechFortress.xml"></suite-file>
+  		<suite-file path="testng/Datamask.xml"></suite-file>
+  		<suite-file path="testng/System-Checkup.xml"></suite-file>
+  		<suite-file path="testng/PrivateWifi.xml"></suite-file>
+  		<suite-file path="testng/Talktalk-ccu.xml"></suite-file>
+  		
+  	</suite-files>
+
+</suite>

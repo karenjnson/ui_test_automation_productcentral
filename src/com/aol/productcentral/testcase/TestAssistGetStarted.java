@@ -10,6 +10,8 @@ import com.aol.assist.ui.page.CommonIssuesPage;
 import com.aol.assist.ui.page.DevicesWeSupportPage;
 import com.aol.assist.ui.page.PlansPage;
 import com.aol.assist.ui.page.WhyChooseUsPage;
+import com.applitools.eyes.Eyes;
+import com.applitools.eyes.StdoutLogHandler;
 
 public class TestAssistGetStarted extends UITestBase {
 
@@ -22,9 +24,11 @@ public class TestAssistGetStarted extends UITestBase {
 		
 		//createAccount(accountType, username, password, asqQuestion, asqAnswer, countryCode);
 		landingPage.openLandingPage(envProps);
-		scrollToBottom(driver);
+		//scrollToBottom(driver);
+		eyes.setLogHandler(new StdoutLogHandler(true));
 		checkWindow("Landing Page");
 		
+		/* 
 		PlansPage plansPage = landingPage.getStarted();
 		checkWindow("Plans Page");
 
@@ -39,6 +43,9 @@ public class TestAssistGetStarted extends UITestBase {
 		
 		commonIssuesPage.clickWhyChooseUsPage();
 		checkWindow("Why Choose Us");
+		*/
 	}
+	
+	
 	
 }

@@ -12,8 +12,11 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.remote.SessionId;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 
@@ -25,9 +28,12 @@ import com.aol.assist.ui.page.LandingPage;
 import com.aol.assist.ui.page.LandingPageFactory;
 import com.aol.automation.webdriver.WebDriverFactory;
 import com.aol.automation.webdriver.WebDriverWrapper;
+import com.applitools.eyes.BatchInfo;
 import com.applitools.eyes.Eyes;
 import com.applitools.eyes.MatchLevel;
 import com.applitools.eyes.RectangleSize;
+
+import dataProviders.DataProviderGenerator;
 
 public abstract class UITestBase {
 
@@ -50,10 +56,19 @@ public abstract class UITestBase {
 	protected String deviceType = null;
 	private boolean isEyesDisabled = false;
 
+	public String prodUrl;
+	public String ctaCssSelector;
+	private Object inputTestFile;
+
+	private static String batchName;
+	protected static BatchInfo batch;
+
 
 	@BeforeSuite(alwaysRun=true)
-	@Parameters({"env", "gridProviders"})
-	public void beforeSuite(String env, @Optional(DEFAULT_GRID_PROVIDERS) String gridProviders) throws IOException {
+	@Parameters({"env", "gridProviders", "batchName", "prodUrl", "inputTestFile","productName", "ctaCssSelector"})
+	public void beforeSuite(String env, @Optional(DEFAULT_GRID_PROVIDERS) String gridProviders, @Optional String batchName, @Optional String prodUrl, @Optional String inputTestFile, @Optional String productName, @Optional String ctaCssSelector) throws IOException {
+
+		LOG.debug("@BEFORESUITE *******************************");
 
 		if (StringUtils.isBlank(env)) {
 			LOG.warn("No env or unrecognized env specified ["+ env +"].  Defaulting env to 'qa'");
@@ -67,14 +82,77 @@ public abstract class UITestBase {
 
 		/* NOTE: gridProviders is set to DEFAULT_GRID_PROVIDERS if user doesn't specify */
 		driverFactory = new WebDriverFactory(getGridProviders(gridProviders));
+		
+		batch = new BatchInfo(batchName);
+		LOG.debug("Setting the batch name used by applitools "+batchName);
+		
+		this.prodUrl = prodUrl;
+		LOG.debug("Setting the prodUrl:  "+prodUrl);
+		
+		this.inputTestFile = inputTestFile;
+		LOG.debug("Setting the input Test file: "+inputTestFile);
+		
+		this.productName = productName;
+		LOG.debug("Setting the product name: "+productName);
+		
+		this.ctaCssSelector = ctaCssSelector;
+		LOG.debug("Setting the CTA Selector: "+ctaCssSelector);
+	}
+	
+	@Parameters({"prodUrl"})
+	public String getProdUrl() {
+		LOG.debug("The product URL: "+prodUrl);
+		return prodUrl;
+	}
+	
+	@Parameters({"inputTestFile"})
+	public String getInputTestFile() {
+		LOG.debug("The input test file: "+inputTestFile);
+		return (String) inputTestFile;
+	}
+	
+	@Parameters({"productName"})
+	public String getProductName() {
+		LOG.debug("The product Name: "+productName);
+		return productName;
+
+	}
+	
+	@Parameters({"ctaCssSelector"})
+	public String getCtaCssSelector() {
+		LOG.debug("The CTA Selector: "+ctaCssSelector);
+		return ctaCssSelector;
+
 	}
 
+	
+	/* OBTAIN THE TEST DATA
+	 * 	 The data is retrieved from a flat file
+	 *   Each line the flat file represents a test case
+	*/
+	//@DataProvider
+	//@Parameters({"inputFileName"})
+	// Get the Data(Test Cases)
+	//public Object[][] theDataProviderData (ITestContext testContext, Method method, String inputFileName) throws Exception {
+		
+		//Object[][] theTestData = new Object[][] { {"windows","chrome","1440","900","privatewifi","44.0","win8" },{"windows","firefox","1440","900","privatewifi","44.0","win8" } };
+		
+		/*
+		DataProviderGenerator getData = new DataProviderGenerator(inputFileName);
+		Object[][] theTestData = getData.testData();
+		*/
+		
+		//return theTestData;
+	//}
 
-	@BeforeMethod(alwaysRun=true)
-	@Parameters({"os", "browserType", "width", "height", "productName", "browserVersion"})
+
+
+	//@BeforeMethod(alwaysRun=true)
+	@Parameters({"os", "browserType", "width", "height", "productName", "browserVersion", "osType"})
 	public void beforeMethod(ITestContext testContext, Method method, String os,
-			String browserType, @Optional("") String width, @Optional("") String height, String productName, @Optional("")String browserVersion)
+			String browserType, @Optional("") String width, @Optional("") String height, String productName, @Optional("")String browserVersion, @Optional("") String osType )
 	{
+		LOG.debug("@BEFOREMETHOD *******************************");
 		LOG.debug("width: " + width);
 		LOG.debug("Height: " + height);
 
@@ -101,7 +179,9 @@ public abstract class UITestBase {
 		{*/
 			String resolution =width+"x"+height;
 			LOG.info("Default resolution should be considered : "+resolution);	
-			driver.openEyes(getEyes(), testName, productName+" "+testName+"_"+os+"_"+browserType+"_"+browserVersion+"_"+resolution, getRectangle(width, height));
+			//driver.openEyes(getEyes(), testName, productName+" "+testName+"_"+os+"_"+browserType+"_"+browserVersion+"_"+resolution, getRectangle(width, height));
+			String applicationName = productName+"-"+osType;
+			driver.openEyes(getEyes(), testName,applicationName+" "+browserType+"_"+os+"_"+resolution, getRectangle(width, height));
 		//}
 
 		saveSessionId(testContext);
@@ -113,20 +193,26 @@ public abstract class UITestBase {
 				+ "_"+ browserVersion
 				+ "_" + "USR" + "."
 				+ mainProps.getProperty("SCREENSHOT_IMG_FORMAT");
+		
+
 
 		if(StringUtils.isNotBlank(testContext.getCurrentXmlTest().getParameter("mobileVersion"))){
 			mobileVersion  = Boolean.valueOf(testContext.getCurrentXmlTest().getParameter("mobileVersion"));
 			deviceType = testContext.getCurrentXmlTest().getParameter("deviceType");
 		}
 	}
+	
 
+	
 
 	@AfterMethod(alwaysRun=true)
 	protected void afterMethod() {
+		LOG.debug("@AFTERMETHOD *******************************");
+
 		try {
 			// End visual testing. Validate visual correctness.
 			if(eyes != null){
-				eyes.close();
+				//eyes.close();
 			}
 		} finally {
 			if (driver != null) {
@@ -147,7 +233,7 @@ public abstract class UITestBase {
 	}
 
 
-	private RectangleSize getRectangle(String width, String height) {
+	protected RectangleSize getRectangle(String width, String height) {
 		LOG.debug("getRectangle() width: " + width);
 		LOG.debug("getRectangle() Height: " + height);
 
@@ -221,7 +307,7 @@ public abstract class UITestBase {
 
 	protected void checkWindow(String suffix) {
 		if (!isEyesDisabled) {
-			eyes.setSaveFailedTests(true);
+			eyes.setSaveFailedTests(false);
 			eyes.checkWindow(productName+" "+suffix);
 		}
 	}
@@ -246,13 +332,15 @@ public abstract class UITestBase {
 		return value;
 	}
 
-	private Eyes getEyes() {
+	protected Eyes getEyes() {
 
 		if(eyes == null) {
 			eyes = new Eyes();
 	        eyes.setApiKey(getApplitoolsApiKey());
 	        eyes.setMatchLevel(MatchLevel.CONTENT);
 	        eyes.setForceFullPageScreenshot(true);
+	        eyes.setMatchTimeout(7);
+	        eyes.setBatch(batch);
 		}
 		return eyes;
 	}
@@ -260,11 +348,17 @@ public abstract class UITestBase {
 	private boolean shouldDisableEyes() {
 		LOG.debug("Checking if Eyes() should be disabled...");
 //		return StringUtils.isNotBlank(System.getProperty("disableEyes"))?BooleanUtils.toBoolean(System.getProperty("disableEyes")):BooleanUtils.toBoolean(mainProps.getProperty("DISABLE_EYES"));
-		return BooleanUtils.toBoolean(getPropertyFromSystemOrFile("disableEyes", "DIABLE_EYES"));
+		return BooleanUtils.toBoolean(getPropertyFromSystemOrFile("disableEyes", "DISABLE_EYES"));
+	}
+	
+	public boolean shouldDisableMbox() {
+		LOG.debug("Checking if Mbox should be disabled...");
+//		return StringUtils.isNotBlank(System.getProperty("disableEyes"))?BooleanUtils.toBoolean(System.getProperty("disableEyes")):BooleanUtils.toBoolean(mainProps.getProperty("DISABLE_EYES"));
+		return BooleanUtils.toBoolean(getPropertyFromSystemOrFile("disableMbox", "DISABLE_MBOX"));
 	}
 
 
-	private WebDriverFactory getDriverFactory(ITestContext testContext) {
+	protected WebDriverFactory getDriverFactory(ITestContext testContext) {
 		if(driverFactory == null){
 			driverFactory = new WebDriverFactory(getGridProviders(testContext.getCurrentXmlTest().getParameter("gridProviders")));
 		}

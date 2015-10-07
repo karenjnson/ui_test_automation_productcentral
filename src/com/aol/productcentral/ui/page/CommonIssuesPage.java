@@ -11,6 +11,6 @@ public class CommonIssuesPage extends FullPage {
 		// TODO Auto-generated constructor stub
 		checkHeaderText(HEADER_TEXT_LOC, EXPECTED_HEADER_TEXT);
 	}
-	private static final String EXPECTED_HEADER_TEXT = "It’s ok, we all have tech issues";
+	private static final String EXPECTED_HEADER_TEXT = "It's ok, we all have tech issues";
 	private static final By HEADER_TEXT_LOC = By.id("hero-content-title");
 }

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<suite name="System-CheckupSuite" parallel="false">
+
+	<parameter name="env" value="prod" />
+	<parameter name="gridProviders" value="browserstack" />
+	<parameter name="productName" value="System-Checkup" />
+	<parameter name="prodUrl" value="https://productcentral.aol.com/products/system-checkup" />
+	<parameter name="inputTestFile"  value="test-files/NonResponsive_Tests.txt" />
+	<parameter name="batchName" value="Product Central System-Checkup" />
+			
+	<test name="Test_Windows_Firefox_1440_900">
+		<classes>
+			<class name="com.aol.assist.testcase.ResponsiveUITest" />
+		</classes>
+	</test>
+
+</suite>

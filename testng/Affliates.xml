@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<suite name="AffliatesSuite" parallel="false">
+
+	<parameter name="gridProviders" value="browserstack" />
+	<parameter name="productName" value="Affiliates" />
+	<parameter name="prodUrl" value="https://productcentral.aol.com/products/affiliates" />
+	<parameter name="inputTestFile"  value="test-files/NonResponsive_Tests.txt" />
+	<parameter name="batchName" value="Product Central Affiliates" />
+			
+	<test name="Test_Windows_Firefox_1440_900">
+		<classes>
+			<class name="com.aol.assist.testcase.ResponsiveUITest" />
+		</classes>
+	</test>
+
+</suite>

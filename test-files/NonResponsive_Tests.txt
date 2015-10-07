@@ -1,0 +1,9 @@
+# Mac Can Not set browsersize of 360 x 640
+mac,chrome,44.0,1440,900,desktop
+mac,firefox,39.0,1440,900,desktop
+mac,chrome,44.0,1024,768,ipad
+mac,chrome,44.0,640,360,samsung_galaxy4_landscape
+windows,chrome,44.0,1440,900,desktop
+windows,firefox,39.0,1440,900,desktop
+windows,chrome,44.0,1024,768,ipad
+windows,chrome,44.0,360,640,samsung_galaxy4_landscape
